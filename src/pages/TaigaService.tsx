@@ -3,8 +3,14 @@ import { useState } from "react";
 
 const Example: React.FC = () => {
   const [date, setDate] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [url, setUrl] = useState("");
 
-  console.log(date);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(date, username, password, url);
+  };
 
   return (
     <>
@@ -24,7 +30,7 @@ const Example: React.FC = () => {
 
             <div className="mt-12">
               <div className="mt-6">
-                <form action="#" method="POST" className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label
@@ -38,6 +44,8 @@ const Example: React.FC = () => {
                           id="email"
                           name="email"
                           type="email"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
                           autoComplete="email"
                           required
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -57,6 +65,8 @@ const Example: React.FC = () => {
                           id="password"
                           name="password"
                           type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
                           autoComplete="current-password"
                           required
                           className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -75,7 +85,9 @@ const Example: React.FC = () => {
                     <div className="mt-1">
                       <input
                         id="taiga-url"
-                        type="text"
+                        type="url"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
