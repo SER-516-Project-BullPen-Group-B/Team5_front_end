@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Service from "./pages/TaigaService";
+import Chart from "./pages/ChartApp"
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -12,6 +13,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="taiga-service" element={<Service />} />
+        <Route path="barchart" element={<Chart />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
