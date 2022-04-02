@@ -2,8 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Serivce from "./pages/TaigaService";
-import Home from "./pages/Home";
+import Service from "./pages/TaigaService";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -12,7 +11,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="taiga-service" element={<Serivce />} />
+        <Route path="taiga-service" element={<Service />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
