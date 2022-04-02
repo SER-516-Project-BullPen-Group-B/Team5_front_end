@@ -27,7 +27,7 @@ function App() {
           paddingBottom: "1rem",
         }}
       >
-        <Link to="/barChart">Bar Chart</Link> |{" "}
+        <Link to="/microservice3">Microservice 3</Link> |{" "}
       </nav>
       <Home />
     </div>
