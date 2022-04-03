@@ -2,13 +2,21 @@ import Calender from "../components/calender";
 import { useState } from "react";
 
 const Example: React.FC = () => {
-  const [date, setDate] = useState();
+  const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let formattedDate = new Date(Date.parse(date.toString()));
+    console.log(
+      formattedDate.getMonth() +
+        "/" +
+        formattedDate.getDate() +
+        "/" +
+        formattedDate.getFullYear()
+    );
     console.log(date, username, password, url);
   };
 
