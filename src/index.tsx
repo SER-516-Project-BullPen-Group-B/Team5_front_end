@@ -7,6 +7,7 @@ import Chart from "./pages/ChartApp";
 import PolarChart from "./pages/PolarChart";
 import App from "./App";
 import Microservice from "./pages/Microservice3";
+import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Route path="/" element={<App />} />
         <Route path="taiga-service" element={<Service />} />
         <Route path="microservice3" element={<Microservice />} />
+        <Route path="tasks-per-day" element={<NoOfTasksPerDay />} />
         <Route path="barchart" element={<Chart />} />
         <Route path="PolarChart" element={<PolarChart/>} />
       </Routes>

@@ -27,6 +27,14 @@ function App() {
           paddingBottom: "1rem",
         }}
       >
+        <Link to="/tasks-per-day">Microservice 1</Link> |{" "}
+      </nav>
+      <nav
+        style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem",
+        }}
+      >
         <Link to="/microservice3">Microservice 3</Link> |{" "}
       </nav>
       <Home />
