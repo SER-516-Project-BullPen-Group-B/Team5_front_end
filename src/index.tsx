@@ -9,6 +9,7 @@ import App from "./App";
 import CycleTime from "./pages/CycleTime";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
+import WIP from "./pages/WIP";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route path="taiga-service" element={<Service />} />
         <Route path="cycle-time" element={<CycleTime />} />
         <Route path="tasks-per-day" element={<NoOfTasksPerDay />} />
+        <Route path="work-in-progress" element={<WIP />} />
         <Route path="barchart" element={<Chart />} />
         <Route path="PolarChart" element={<PolarChart />} />
       </Routes>
