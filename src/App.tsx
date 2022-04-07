@@ -1,44 +1,11 @@
-import { Link } from "react-router-dom";
-import Home from "./pages/Home";
+import TaigaService from "./pages/TaigaService";
 import "./App.css";
 
 function App() {
   return (
-    <div>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/">Home</Link>
-      </nav>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/taiga-service">Taiga Service</Link> |{" "}
-      </nav>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/tasks-per-day">Microservice 1</Link> |{" "}
-      </nav>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/microservice3">Microservice 3</Link> |{" "}
-      </nav>
-      <Home />
-    </div>
+    <>
+      <TaigaService />
+    </>
   );
 }
 
