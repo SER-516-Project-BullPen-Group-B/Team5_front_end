@@ -9,6 +9,7 @@ import App from "./App";
 import CycleTime from "./pages/CycleTime";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
+import CFD from './pages/CFD';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="tasks-per-day" element={<NoOfTasksPerDay />} />
         <Route path="barchart" element={<Chart />} />
         <Route path="PolarChart" element={<PolarChart />} />
+        <Route path="cummulative-flow-diagram" element={<CFD />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
