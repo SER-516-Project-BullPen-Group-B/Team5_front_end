@@ -1,7 +1,8 @@
 import Calender from "../components/calender";
 import { useState } from "react";
+import Nav from "../components/NavBar";
 
-const Example: React.FC = () => {
+const TaigaService: React.FC = () => {
   const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +10,7 @@ const Example: React.FC = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let formattedDate = new Date(Date.parse(date.toString()));
+    const formattedDate = new Date(Date.parse(date.toString()));
     console.log(
       formattedDate.getMonth() +
         "/" +
@@ -22,6 +23,7 @@ const Example: React.FC = () => {
 
   return (
     <>
+      <Nav />
       <div className="min-h-full">
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -31,8 +33,8 @@ const Example: React.FC = () => {
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt="Workflow"
               />
-              <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-                Welcome! Vizualise your project's metrics here
+              <h2 className="mt-6 text-2xl font-extrabold text-gray-900">
+                Welcome! Visualize your project's metrics here
               </h2>
             </div>
 
@@ -124,4 +126,4 @@ const Example: React.FC = () => {
   );
 };
 
-export default Example;
+export default TaigaService;
