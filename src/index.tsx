@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Service from "./pages/TaigaService";
-import Chart from "./pages/BarChart";
 import PolarChart from "./pages/PolarChart";
 import App from "./App";
 import CycleTime from "./pages/CycleTime";
@@ -18,7 +17,6 @@ ReactDOM.render(
         <Route path="taiga-service" element={<Service />} />
         <Route path="cycle-time" element={<CycleTime />} />
         <Route path="tasks-per-day" element={<NoOfTasksPerDay />} />
-        <Route path="barchart" element={<Chart />} />
         <Route path="PolarChart" element={<PolarChart />} />
       </Routes>
     </BrowserRouter>
