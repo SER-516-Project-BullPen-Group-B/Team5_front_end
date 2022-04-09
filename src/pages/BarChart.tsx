@@ -9,6 +9,8 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
+import PropTypes from "prop-types";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -39,19 +41,16 @@ export const options = {
   },
 };
 
-const labels = ["US_1", "US_2", "US_3", "US_4", "US_5", "US_6", "US_7"];
+interface BarChartProps {
+  data: string;
+}
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: [56, 34, 23, 18, 89, 38, 56],
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
+const BarChart: React.FC<BarChartProps> = ({ data }) => {
+  return <Bar options={options} data={JSON.parse(data)} />;
 };
 
-export default function BarChart() {
-  return <Bar options={options} data={data} />;
-}
+BarChart.propTypes = {
+  data: PropTypes.string.isRequired,
+};
+
+export default BarChart;

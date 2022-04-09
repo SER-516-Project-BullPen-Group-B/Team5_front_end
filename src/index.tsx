@@ -3,10 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Service from "./pages/TaigaService";
-import Chart from "./pages/BarChart";
 import PolarChart from "./pages/PolarChart";
 import App from "./App";
-import CycleTime from "./pages/CycleTime";
+import LeadTime from "./pages/LeadTime";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 
@@ -16,9 +15,8 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="taiga-service" element={<Service />} />
-        <Route path="cycle-time" element={<CycleTime />} />
+        <Route path="lead-time" element={<LeadTime />} />
         <Route path="tasks-per-day" element={<NoOfTasksPerDay />} />
-        <Route path="barchart" element={<Chart />} />
         <Route path="PolarChart" element={<PolarChart />} />
       </Routes>
     </BrowserRouter>
