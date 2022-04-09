@@ -1,12 +1,18 @@
 import Calender from "../components/calender";
 import { useState } from "react";
 import Nav from "../components/NavBar";
+import Rx from "rxjs";
+import localForage from "localforage";
+import { extendPrototype } from "localforage-observable";
 
 const TaigaService: React.FC = () => {
+  const [data, setData] = useState<any>([]);
   const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
+
+  let localforage = extendPrototype(localForage);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +24,22 @@ const TaigaService: React.FC = () => {
         "/" +
         formattedDate.getFullYear()
     );
+    localforage.newObservable.factory = function (subscribeFn) {
+      return Rx.Observable.create(subscribeFn);
+    };
+    const leadTime = localforage.newObservable({ key: "leadTime" });
+    leadTime.subscribe({
+      next: function (args) {
+        console.log("New lead time:", args.newValue);
+        setData(args.newValue);
+      },
+    });
+    const leadTimeObservable = localforage.getItemObservable("leadTime");
+    leadTimeObservable.subscribe({
+      next: function (value) {
+        setData(value);
+      },
+    });
     console.log(date, username, password, url);
   };
 
