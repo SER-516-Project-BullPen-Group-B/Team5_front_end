@@ -1,4 +1,3 @@
-import Nav from "../components/NavBar";
 import BarChart from "./BarChart";
 import DropDown from "../components/DropDown";
 import localForage from "localforage";
@@ -27,7 +26,6 @@ const LeadTime: React.FC = () => {
 
   return (
     <div>
-      <Nav />
       <div className="flex justify-end ...">
         <div className="m-6">
           {" "}

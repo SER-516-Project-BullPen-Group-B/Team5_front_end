@@ -6,7 +6,6 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
-import Nav from "../components/NavBar";
 import { Line } from "react-chartjs-2";
 import DropDown from "../components/DropDown";
 
@@ -51,7 +50,6 @@ export const data = {
 export default function NoOfTasksPerDay() {
   return (
     <div>
-      <Nav />
       <div className="flex justify-end ...">
         <div className="m-6">
           {" "}
