@@ -5,7 +5,10 @@ import { useEffect, useState } from "react";
 
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
+  const [select, setSelect] = useState("");
+  const types = ["Bar", "Line", "Radar", "PolarArea", "Pie", "Doughnut"];
 
+  console.log(select);
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("leadTime", (err, value: any) => {
@@ -29,7 +32,7 @@ const LeadTime: React.FC = () => {
       <div className="flex justify-end ...">
         <div className="m-6">
           {" "}
-          <DropDown />
+          <DropDown values={types} select={setSelect} />
         </div>
       </div>
       <div className="m-4">
