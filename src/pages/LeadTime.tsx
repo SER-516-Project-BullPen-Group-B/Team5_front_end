@@ -17,9 +17,9 @@ const LeadTime: React.FC = () => {
         labels,
         datasets: [
           {
-            label: "Data",
+            label: "Lead Time",
             data: Object.values(value),
-            backgroundColor: "rgba(97, 150, 68, 0.8)",
+            backgroundColor: "rgba(07, 90, 128, 0.6)",
           },
         ],
       };
