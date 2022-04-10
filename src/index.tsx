@@ -6,6 +6,7 @@ import Service from "./pages/TaigaService";
 import PolarChart from "./pages/PolarChart";
 import App from "./App";
 import LeadTime from "./pages/LeadTime";
+import Nav from "./components/Nav";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 
@@ -13,11 +14,14 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="taiga-service" element={<Service />} />
-        <Route path="lead-time" element={<LeadTime />} />
-        <Route path="tasks-per-day" element={<NoOfTasksPerDay />} />
-        <Route path="PolarChart" element={<PolarChart />} />
+        <Route path="/" element={<Nav render={<App />} />} />
+        <Route path="taiga-service" element={<Nav render={<Service />} />} />
+        <Route path="lead-time" element={<Nav render={<LeadTime />} />} />
+        <Route
+          path="tasks-per-day"
+          element={<Nav render={<NoOfTasksPerDay />} />}
+        />
+        <Route path="PolarChart" element={<Nav render={<PolarChart />} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
