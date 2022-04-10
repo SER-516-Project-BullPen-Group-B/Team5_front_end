@@ -51,14 +51,14 @@ export const data = {
 };
 
 export default function NoOfTasksPerDay() {
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState("Charts");
   console.log(select);
   return (
     <div>
       <div className="flex justify-end ...">
         <div className="m-6">
           {" "}
-          <DropDown values={types} select={setSelect} />
+          <DropDown values={types} select={setSelect} title={select} />
         </div>
       </div>
       <div className="m-4">

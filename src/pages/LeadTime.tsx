@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState("Charts");
   const types = ["Bar", "Line", "Radar", "PolarArea", "Pie", "Doughnut"];
 
   console.log(select);
@@ -32,7 +32,7 @@ const LeadTime: React.FC = () => {
       <div className="flex justify-end ...">
         <div className="m-6">
           {" "}
-          <DropDown values={types} select={setSelect} />
+          <DropDown values={types} select={setSelect} title={select} />
         </div>
       </div>
       <div className="m-4">
