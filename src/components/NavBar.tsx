@@ -3,12 +3,13 @@ import { ChevronRightIcon, HomeIcon } from "@heroicons/react/solid";
 const pages = [
   { name: "Home", href: "/", current: false },
   { name: "Taiga Service", href: "/taiga-service", current: true },
+  { name: "Lead Time", href: "/lead-time", current: false },
   { name: "Active Tasks", href: "/tasks-per-day", current: false },
-  { name: "Lead Time", href: "/Lead-time", current: false },
 ];
 
 export default function Nav() {
   return (
+    /*eslint-disable */
     <nav className="flex" aria-label="Breadcrumb">
       <ol role="list" className="flex items-center space-x-4">
         <li>

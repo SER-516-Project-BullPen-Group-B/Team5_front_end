@@ -1,23 +1,31 @@
-import Nav from "../components/NavBar";
-import BarChart from "../components/BarChart";
+import BarChart from "./BarChart";
 import DropDown from "../components/DropDown";
+import localForage from "localforage";
+import { useEffect, useState } from "react";
 
-function LeadTime() {
-const labels = ["US_1", "US_2", "US_3", "US_4", "US_5", "US_6", "US_7"];
+const LeadTime: React.FC = () => {
+  const [data, setData] = useState("");
 
-const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: [56, 34, 23, 18, 89, 38, 56],
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
-};
+  useEffect(() => {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    localForage.getItem("leadTime", (err, value: any) => {
+      const labels = Object.keys(value);
+      const data = {
+        labels,
+        datasets: [
+          {
+            label: "Dataset 1",
+            data: Object.values(value),
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
+          },
+        ],
+      };
+      setData(JSON.stringify(data));
+    });
+  }, []);
+
   return (
     <div>
-      <Nav />
       <div className="flex justify-end ...">
         <div className="m-6">
           {" "}
@@ -25,10 +33,10 @@ const data = {
         </div>
       </div>
       <div className="m-4">
-        <BarChart data={data}/>
+        {data ? <BarChart data={data} /> : <div>Data not available ...</div>}
       </div>
     </div>
   );
-}
+};
 
 export default LeadTime;
