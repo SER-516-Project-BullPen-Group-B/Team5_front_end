@@ -1,4 +1,4 @@
-import BarChart from "./BarChart";
+import BarChart from "../components/BarChart";
 import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
@@ -17,9 +17,9 @@ const LeadTime: React.FC = () => {
         labels,
         datasets: [
           {
-            label: "Dataset 1",
+            label: "Data",
             data: Object.values(value),
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            backgroundColor: "rgba(97, 150, 68, 0.8)",
           },
         ],
       };
