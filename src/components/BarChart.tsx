@@ -1,44 +1,48 @@
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from "chart.js";
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { Bar } from "react-chartjs-2";
-  
+
+import PropTypes from "prop-types";
+
 ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
-  
-const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top" as const,
-      },
-      title: {
-        display: true,
-        text: "Cycle Time per User Story",
-      },
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top" as const,
     },
-    scales: {
-      x: {
-        stacked: true,
-      },
-      y: {
-        stacked: true,
-      },
+    title: {
+      display: true,
+      text: "Lead Time per User Story",
     },
-  };
-  
-export default function BarChart(props) {
-    return <Bar options={options} data={props.data} />;
-  }
+  },
+};
+
+interface BarChartProps {
+  data: string;
+}
+
+const BarChart: React.FC<BarChartProps> = ({ data }) => {
+  return <Bar options={options} data={JSON.parse(data)} />;
+};
+
+BarChart.propTypes = {
+  data: PropTypes.string.isRequired,
+};
+
+export default BarChart;
