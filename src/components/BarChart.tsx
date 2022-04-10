@@ -28,15 +28,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Cycle Time per User Story",
-    },
-  },
-  scales: {
-    x: {
-      stacked: true,
-    },
-    y: {
-      stacked: true,
+      text: "Lead Time per User Story",
     },
   },
 };
