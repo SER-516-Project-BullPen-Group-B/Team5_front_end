@@ -4,49 +4,62 @@ import localForage from "localforage";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
-// http://mpattan.pythonanywhere.com/leadTime?slug=
+import DropDown from "../components/DropDown";
+import { map } from "../components/api-mappings";
 
 const TaigaService: React.FC = () => {
   const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
-
+  const [select, setSelect] = useState("Metrics");
+  const metrics = ["Lead Time", "Active Time", "Cycle Time", "Happiness"];
+  const metric = map[select];
+  console.log(map, metric, select);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formattedDate = new Date(Date.parse(date.toString()));
-    console.log(
-      formattedDate.getMonth() +
-        "/" +
-        formattedDate.getDate() +
-        "/" +
-        formattedDate.getFullYear()
-    );
-    try {
-      const data = axios.get(
-        `http://mpattan.pythonanywhere.com/leadTime?slug=${url}`
+    if (select !== "Metrics") {
+      const metric = map[select];
+      const formattedDate = new Date(Date.parse(date.toString()));
+      console.log(
+        formattedDate.getMonth() +
+          "/" +
+          formattedDate.getDate() +
+          "/" +
+          formattedDate.getFullYear()
       );
-      data
-        .then(async (res) => {
-          localForage.setItem("leadTime", res.data);
-        })
-        .catch((err) => {
-          console.log(err);
+      try {
+        const data = axios.get(`${metric.endpoint + url}`);
+        data
+          .then(async (res) => {
+            localForage.setItem("leadTime", res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        toast.promise(data, {
+          pending: metric.requestPending,
+          success: metric.requestSuccess,
+          error: metric.requestError,
         });
-      toast.promise(data, {
-        pending: "Generating Viz for Lead Time",
-        success: "Viz for Lead Time is ready!",
-        error: "An unexpected error occured while processing the request",
-      });
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log("error");
-      } else {
-        console.log("error");
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log("error");
+        } else {
+          console.log("error");
+        }
       }
+    } else {
+      toast("Select a metric before maiking the request!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
-    console.log(date, username, password, url);
   };
   return (
     <>
@@ -131,11 +144,16 @@ const TaigaService: React.FC = () => {
                       />
                     </div>
                   </div>
-
+                  <div className="content-center">
+                    <DropDown
+                      values={metrics}
+                      select={setSelect}
+                      title={select}
+                    />
+                  </div>
                   <div className="content-center">
                     <Calender date={setDate} />
                   </div>
-
                   <div>
                     <button
                       type="submit"
