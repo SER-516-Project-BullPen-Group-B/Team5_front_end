@@ -1,0 +1,21 @@
+.Appt {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+table {
+  border: 2px solid rgb(255, 146, 146);
+  width: 800px;
+  height: 200px;
+}
+  
+th {
+  border-bottom: 1px solid rgb(255, 82, 82);
+}
+  
+td {
+  text-align: center;
+}
