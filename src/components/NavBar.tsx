@@ -5,7 +5,8 @@ const pages = [
   { name: "Taiga Service", href: "/taiga-service", current: true },
   { name: "Active Tasks", href: "/tasks-per-day", current: false },
   { name: "Cycle Time", href: "/cycle-time", current: false },
-  { name: "Niko-Niko", href: "/Happiness", current: false },
+  { name: "Niko-Niko", href: "/Niko-Niko", current: false },
+  { name: "Niko-Niko table", href: "/table", current: false },
 ];
 
 export default function Nav() {

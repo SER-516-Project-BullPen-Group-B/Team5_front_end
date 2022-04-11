@@ -63,7 +63,7 @@ export const data = {
   ],
 };
 
-function Niko() {
+export default function Niko() {
     return (
       <div>
         <Nav />
@@ -79,5 +79,3 @@ function Niko() {
       </div>
     );
   }
-  
-  export default Niko;

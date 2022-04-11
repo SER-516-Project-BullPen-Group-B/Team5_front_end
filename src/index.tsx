@@ -10,7 +10,8 @@ import CycleTime from "./pages/CycleTime";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 import Niko from "./pages/Niko-Niko";
-
+import Appt from "./pages/table";
+import { Tab } from "@headlessui/react";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -19,7 +20,8 @@ ReactDOM.render(
         <Route path="taiga-service" element={<Service />} />
         <Route path="cycle-time" element={<CycleTime />} />
         <Route path="tasks-per-day" element={<NoOfTasksPerDay />} />
-        <Route path="Happiness" element={<Niko/>} />
+        <Route path="Niko-Niko" element={<Niko />} />
+        <Route path="table" element={<Appt />} />
         <Route path="barchart" element={<Chart />} />
         <Route path="PolarChart" element={<PolarChart />} />
       </Routes>
