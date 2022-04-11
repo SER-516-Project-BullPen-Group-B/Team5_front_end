@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Service from "./pages/TaigaService";
-import PolarChart from "./pages/PolarChart";
 import App from "./App";
 import LeadTime from "./pages/LeadTime";
 import Nav from "./components/Nav";
@@ -21,7 +20,6 @@ ReactDOM.render(
           path="tasks-per-day"
           element={<Nav render={<NoOfTasksPerDay />} />}
         />
-        <Route path="PolarChart" element={<Nav render={<PolarChart />} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

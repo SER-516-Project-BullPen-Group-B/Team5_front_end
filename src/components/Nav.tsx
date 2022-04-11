@@ -7,8 +7,6 @@ import {
   MenuIcon,
   UsersIcon,
   XIcon,
-  ChevronDownIcon,
-  ChevronUpIcon
 } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
@@ -19,35 +17,18 @@ const navigation = [
     href: "/taiga-service",
     icon: UsersIcon,
     current: false,
-    iconClosed: ChevronDownIcon,
-    iconOpened: ChevronUpIcon
   },
   { 
     name: "Lead Time", 
-    icon: FolderIcon, 
+    href: "/lead-time",
+    icon: FolderIcon,
     current: false,
-    iconClosed: ChevronDownIcon,
-    iconOpened: ChevronUpIcon,
-    subNav: [
-      {
-        name: "BarChart", 
-        href: "/lead-time", 
-        icon: FolderIcon, 
-      },
-      {
-        name: "PolarAreaChart", 
-        href: "/PolarChart", 
-        icon: FolderIcon, 
-      }
-    ]
   },
   {
     name: "Active Tasks",
     href: "/tasks-per-day",
     icon: CalendarIcon,
     current: false,
-    iconClosed: ChevronDownIcon,
-    iconOpened: ChevronUpIcon
   },
 ];
 
@@ -62,10 +43,6 @@ interface NavProps {
 
 const Nav: React.FC<NavProps> = ({ render }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const [subnav, setSubnav] = useState(false);
-
-  const showSubnav = () => setSubnav(!subnav)
 
   return (
     <>
@@ -170,37 +147,14 @@ const Nav: React.FC<NavProps> = ({ render }) => {
                       href={item.href}
                       className={classNames(
                         "text-white hover:bg-indigo-600 hover:bg-opacity-75",
-                        "group flex-col items-center px-2 py-2 text-sm font-medium rounded-md"
+                        "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                       )}
-                      onClick={item.subNav && showSubnav}
                     >
-                      <div className='flex flex-row pb-1'>
                       <item.icon
                         className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300"
                         aria-hidden="true"
                       />
                       {item.name}
-                      {item.subNav && subnav
-                        ? <item.iconOpened className="absolute right-1 top flex-shrink-0 h-6 w-6 text-indigo-300 " aria-hidden="true"/>
-                        : item.subNav
-                        ? <item.iconClosed className="absolute right-1 top flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true"/>
-                        : null
-                      }
-                      </div>
-                      {subnav && item.subNav?.map((subitem) => {
-                        return (
-                              <a
-                                key={subitem.name}
-                                href={subitem.href}
-                                className={classNames(
-                                  "text-white hover:bg-indigo-600 hover:bg-opacity-75",
-                                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
-                                )}
-                              >
-                                {subitem.name}
-                              </a>
-                        )
-                      })}
                     </a>
                 ))}
               </nav>
