@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import {
   CalendarIcon,
   FolderIcon,
+  ClockIcon,
   HomeIcon,
   MenuIcon,
   UsersIcon,
@@ -23,6 +24,12 @@ const navigation = [
     href: "/lead-time",
     icon: FolderIcon,
     current: false,
+  },
+  {
+    name: "Cycle Time",
+    href: "/cycle-time",
+    icon:ClockIcon,
+    current:false,
   },
   {
     name: "Active Tasks",

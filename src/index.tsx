@@ -8,6 +8,7 @@ import LeadTime from "./pages/LeadTime";
 import Nav from "./components/Nav";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
+import CycleTime from "./pages/CycleTime";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Route path="/" element={<Nav render={<App />} />} />
         <Route path="taiga-service" element={<Nav render={<Service />} />} />
         <Route path="lead-time" element={<Nav render={<LeadTime />} />} />
+        <Route path="Cycle-time" element={<Nav render={<CycleTime />} />} />
         <Route
           path="tasks-per-day"
           element={<Nav render={<NoOfTasksPerDay />} />}
