@@ -32,7 +32,8 @@ const TaigaService: React.FC = () => {
         const data = axios.get(`${metric.endpoint + url}`);
         data
           .then(async (res) => {
-            localForage.setItem("leadTime", res.data);
+            localForage.setItem(metric.localForageKey, res.data);
+            console.log(res.data);
           })
           .catch((err) => {
             console.log(err);
