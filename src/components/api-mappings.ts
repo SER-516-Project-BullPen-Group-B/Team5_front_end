@@ -6,13 +6,7 @@ const data = {
     requestSuccess: "Viz for Lead Time is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Lead Time",
-  },
-  activeTime: {
-    name: "Active Time",
-    endpoint: "https://itiparna.pythonanywhere.com/happiness/",
-    requestSuccess: "Viz for Active Time is ready!",
-    requestFail: "An unexpected error occured while processing the request",
-    requestPending: "Generating Viz for Active Time",
+    localForageKey: "leadTime",
   },
   nikoNiko: {
     name: "Niko Niko",
@@ -20,11 +14,11 @@ const data = {
     requestSuccess: "Viz for Niko Niko is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Niko Niko",
+    localForageKey: "nikoNiko",
   },
 };
 
 export const map = {
   "Lead Time": data.leadTime,
-  "Active Time": data.activeTime,
   Happiness: data.nikoNiko,
 };
