@@ -29,6 +29,12 @@ const navigation = [
     icon: XIcon,
     current: false,
   },
+  {
+    name: "Active tasks",
+    href: "/active-tasks",
+    icon: XIcon,
+    current: false,
+  },
 ];
 
 function classNames(...classes) {

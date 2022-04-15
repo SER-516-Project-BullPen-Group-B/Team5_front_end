@@ -9,6 +9,8 @@ import Nav from "./components/Nav";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 import Niko from "./pages/Niko-Niko";
+import Activetasks from "./pages/activetasks";
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +24,7 @@ ReactDOM.render(
           element={<Nav render={<NoOfTasksPerDay />} />}
         />
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
+        <Route path="active-tasks" element={<Nav render={<Activetasks />} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
