@@ -6,6 +6,7 @@ import {
   MenuIcon,
   UsersIcon,
   XIcon,
+  CollectionIcon,
 } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
@@ -27,6 +28,12 @@ const navigation = [
     name: "Niko Niko",
     href: "/niko-niko",
     icon: XIcon,
+    current: false,
+  },
+  {
+    name: "CFD",
+    href: "/cfd",
+    icon: CollectionIcon,
     current: false,
   },
 ];
