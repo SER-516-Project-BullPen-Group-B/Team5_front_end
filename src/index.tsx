@@ -9,6 +9,7 @@ import Nav from "./components/Nav";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 import Niko from "./pages/Niko-Niko";
+import CFD from "./pages/CFD2";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.render(
           element={<Nav render={<NoOfTasksPerDay />} />}
         />
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
+        <Route path="cfd" element={<Nav render={<CFD />} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
