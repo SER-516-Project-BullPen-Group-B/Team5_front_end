@@ -1,29 +1,78 @@
 import Calender from "../components/calender";
 import { useState } from "react";
-import Nav from "../components/NavBar";
+import localForage from "localforage";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import DropDown from "../components/DropDown";
+import { map } from "../components/api-mappings";
 
 const TaigaService: React.FC = () => {
   const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
-
+  const [select, setSelect] = useState("Metrics");
+  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness"];
+  const metric = map[select];
+  console.log(map, metric, select);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formattedDate = new Date(Date.parse(date.toString()));
-    console.log(
-      formattedDate.getMonth() +
-        "/" +
-        formattedDate.getDate() +
-        "/" +
-        formattedDate.getFullYear()
-    );
-    console.log(date, username, password, url);
+    if (select !== "Metrics") {
+      const metric = map[select];
+      const formattedDate = new Date(Date.parse(date.toString()));
+      console.log(
+        formattedDate.getMonth() +
+          "/" +
+          formattedDate.getDate() +
+          "/" +
+          formattedDate.getFullYear()
+      );
+      try {
+        const data =
+          select === "Lead Time"
+            ? axios.post(`${metric.endpoint + url}`, {
+                username: username,
+                password: password,
+                type: "normal",
+              })
+            : axios.get(`${metric.endpoint + url}`);
+        data
+          .then(async (res) => {
+            localForage.setItem(metric.localForageKey, res.data);
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        toast.promise(data, {
+          pending: metric.requestPending,
+          success: metric.requestSuccess,
+          error: metric.requestError,
+        });
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log("error");
+        } else {
+          console.log(error);
+        }
+      }
+    } else {
+      toast("Select a metric before maiking the request!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
-
   return (
     <>
-      <Nav />
+      <ToastContainer transition={Flip} />
+
       <div className="min-h-full">
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -95,7 +144,7 @@ const TaigaService: React.FC = () => {
                     <div className="mt-1">
                       <input
                         id="taiga-url"
-                        type="url"
+                        type="text"
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                         required
@@ -103,17 +152,22 @@ const TaigaService: React.FC = () => {
                       />
                     </div>
                   </div>
-
+                  <div className="content-center">
+                    <DropDown
+                      values={metrics}
+                      select={setSelect}
+                      title={select}
+                    />
+                  </div>
                   <div className="content-center">
                     <Calender date={setDate} />
                   </div>
-
                   <div>
                     <button
                       type="submit"
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      Sign in
+                      Fetch
                     </button>
                   </div>
                 </form>

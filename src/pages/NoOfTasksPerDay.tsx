@@ -6,9 +6,9 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
-import Nav from "../components/NavBar";
 import { Line } from "react-chartjs-2";
 import DropDown from "../components/DropDown";
+import { useState } from "react";
 
 ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement);
 
@@ -33,6 +33,8 @@ export const options = {
   },
 };
 
+const types = ["Bar", "Line", "Radar", "PolarArea", "Pie", "Doughnut"];
+
 const labels = ["1", "2", "3", "4", "5", "6", "7"];
 
 export const data = {
@@ -49,13 +51,14 @@ export const data = {
 };
 
 export default function NoOfTasksPerDay() {
+  const [select, setSelect] = useState("Charts");
+  console.log(select);
   return (
     <div>
-      <Nav />
       <div className="flex justify-end ...">
         <div className="m-6">
           {" "}
-          <DropDown />
+          <DropDown values={types} select={setSelect} title={select} />
         </div>
       </div>
       <div className="m-4">
