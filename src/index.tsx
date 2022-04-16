@@ -10,6 +10,7 @@ import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 import Niko from "./pages/Niko-Niko";
 import Activetasks from "./pages/activetasks";
+import CFD from "./pages/CFD2";
 
 
 ReactDOM.render(
@@ -25,6 +26,7 @@ ReactDOM.render(
         />
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
         <Route path="active-tasks" element={<Nav render={<Activetasks />} />} />
+        <Route path="cfd" element={<Nav render={<CFD />} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
