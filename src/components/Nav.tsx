@@ -1,13 +1,13 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
-  CalendarIcon,
   FolderIcon,
-  ClockIcon,
   HomeIcon,
   MenuIcon,
   UsersIcon,
   XIcon,
+  CollectionIcon,
+  ClockIcon,
 } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
@@ -19,26 +19,31 @@ const navigation = [
     icon: UsersIcon,
     current: false,
   },
-  { 
-    name: "Lead Time", 
+  {
+    name: "Lead Time",
     href: "/lead-time",
     icon: FolderIcon,
     current: false,
   },
   {
-    name: "Cycle Time",
-    href: "/cycle-time",
-    icon:ClockIcon,
-    current:false,
+    name: "Active tasks",
+    href: "/active-tasks",
+    icon: ClockIcon,
+    current: false,
   },
   {
-    name: "Active Tasks",
-    href: "/tasks-per-day",
-    icon: CalendarIcon,
+    name: "Niko Niko",
+    href: "/niko-niko",
+    icon: XIcon,
+    current: false,
+  },
+  {
+    name: "CFD",
+    href: "/cfd",
+    icon: CollectionIcon,
     current: false,
   },
 ];
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -149,20 +154,20 @@ const Nav: React.FC<NavProps> = ({ render }) => {
               </div>
               <nav className="mt-5 flex-1 px-2 space-y-1">
                 {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        "text-white hover:bg-indigo-600 hover:bg-opacity-75",
-                        "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
-                      )}
-                    >
-                      <item.icon
-                        className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300"
-                        aria-hidden="true"
-                      />
-                      {item.name}
-                    </a>
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={classNames(
+                      "text-white hover:bg-indigo-600 hover:bg-opacity-75",
+                      "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                    )}
+                  >
+                    <item.icon
+                      className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300"
+                      aria-hidden="true"
+                    />
+                    {item.name}
+                  </a>
                 ))}
               </nav>
             </div>
