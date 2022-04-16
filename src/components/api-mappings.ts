@@ -8,6 +8,15 @@ const data = {
     requestPending: "Generating Viz for Lead Time",
     localForageKey: "leadTime",
   },
+  activeTasks: {
+    name: "Active Tasks",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/active-tasks?slug=",
+    requestSuccess: "Viz for Active Tasks is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for Active Tasks",
+    localForageKey: "activeTasks",
+  },
   nikoNiko: {
     name: "Niko Niko",
     endpoint: "https://itiparna.pythonanywhere.com/happiness/",
@@ -21,4 +30,5 @@ const data = {
 export const map = {
   "Lead Time": data.leadTime,
   Happiness: data.nikoNiko,
+  "Active Tasks": data.activeTasks,
 };

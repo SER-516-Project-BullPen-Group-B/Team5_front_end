@@ -13,7 +13,7 @@ const TaigaService: React.FC = () => {
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = ["Lead Time", "Active Time", "Cycle Time", "Happiness"];
+  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness"];
   const metric = map[select];
   console.log(map, metric, select);
   const handleSubmit = (e) => {
@@ -29,7 +29,14 @@ const TaigaService: React.FC = () => {
           formattedDate.getFullYear()
       );
       try {
-        const data = axios.get(`${metric.endpoint + url}`);
+        const data =
+          select === "Lead Time"
+            ? axios.post(`${metric.endpoint + url}`, {
+                username: username,
+                password: password,
+                type: "normal",
+              })
+            : axios.get(`${metric.endpoint + url}`);
         data
           .then(async (res) => {
             localForage.setItem(metric.localForageKey, res.data);
@@ -47,7 +54,7 @@ const TaigaService: React.FC = () => {
         if (axios.isAxiosError(error)) {
           console.log("error");
         } else {
-          console.log("error");
+          console.log(error);
         }
       }
     } else {
