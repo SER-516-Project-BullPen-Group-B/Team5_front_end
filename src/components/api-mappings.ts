@@ -19,7 +19,8 @@ const data = {
   },
   nikoNiko: {
     name: "Niko Niko",
-    endpoint: "https://itiparna.pythonanywhere.com/happiness/",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/niko-niko?slug=",
     requestSuccess: "Viz for Niko Niko is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Niko Niko",

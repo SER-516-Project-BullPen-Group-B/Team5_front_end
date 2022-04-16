@@ -29,6 +29,7 @@ const TaigaService: React.FC = () => {
           formattedDate.getFullYear()
       );
       try {
+<<<<<<< HEAD
         const data =
           select === "Lead Time"
             ? axios.post(`${metric.endpoint + url}`, {
@@ -37,6 +38,19 @@ const TaigaService: React.FC = () => {
                 type: "normal",
               })
             : axios.get(`${metric.endpoint + url}`);
+=======
+        // eslint-disable-next-line
+        let data;
+        if (select === "Lead Time") {
+          data = axios.post(`${metric.endpoint + url}`, {
+            username: username,
+            password: password,
+            type: "normal",
+          });
+        } else {
+          axios.get(`${metric.endpoint + url}`);
+        }
+>>>>>>> interface-update
         data
           .then(async (res) => {
             localForage.setItem(metric.localForageKey, res.data);
@@ -139,7 +153,7 @@ const TaigaService: React.FC = () => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Taiga Project URL
+                      Taiga Project Slug
                     </label>
                     <div className="mt-1">
                       <input
