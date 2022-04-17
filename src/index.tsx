@@ -11,6 +11,7 @@ import reportWebVitals from "./reportWebVitals";
 import Niko from "./pages/Niko-Niko";
 import CFD from "./pages/CFD2";
 import ActiveTasks from "./pages/ActiveTasks";
+import WIP from "./pages/WIP";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
         <Route path="active-tasks" element={<Nav render={<ActiveTasks />} />} />
         <Route path="cfd" element={<Nav render={<CFD />} />} />
+        <Route path="work-in-progress" element={<Nav render={<WIP />} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
