@@ -27,7 +27,7 @@ ReactDOM.render(
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
         <Route path="active-tasks" element={<Nav render={<ActiveTasks />} />} />
         <Route path="cfd" element={<Nav render={<CFD2 />} />} />
-        <Route path="cummulative-flow-diagram" element={<CFD />} />
+        <Route path="cummulative-flow-diagram" element={<Nav render={<CFD />} /> } />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

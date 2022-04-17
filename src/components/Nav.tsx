@@ -39,7 +39,7 @@ const navigation = [
   },
   {
     name: "CFD",
-    href: "/cfd",
+    href: "/cummulative-flow-diagram",
     icon: CollectionIcon,
     current: false,
   },
