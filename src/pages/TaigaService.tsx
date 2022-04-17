@@ -30,15 +30,18 @@ const TaigaService: React.FC = () => {
       );
       try {
         const data =
-          select === "Lead Time" || select === "CFD"
+          select === "Lead Time" || select === "CFD" || select === "Cycle Time"
             ? (
-              select === "Lead Time" 
+              select === "Lead Time" || select === "Cycle Time"
               ? axios.post(`${metric.endpoint + url}`, {
                 username: username,
                 password: password,
                 type: "normal",
               })
               : axios.post(`${metric.endpoint}`, {
+                username: username,
+                password: password,
+                type: "normal",
                 team: url.split(" ")[1],
                 group: url.split(" ")[0]
               })
