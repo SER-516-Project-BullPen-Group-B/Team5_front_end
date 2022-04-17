@@ -13,7 +13,7 @@ const TaigaService: React.FC = () => {
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness"];
+  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness", "CFD"];
   const metric = map[select];
   console.log(map, metric, select);
   const handleSubmit = (e) => {
@@ -30,12 +30,19 @@ const TaigaService: React.FC = () => {
       );
       try {
         const data =
-          select === "Lead Time"
-            ? axios.post(`${metric.endpoint + url}`, {
+          select === "Lead Time" || select === "CFD"
+            ? (
+              select === "Lead Time" 
+              ? axios.post(`${metric.endpoint + url}`, {
                 username: username,
                 password: password,
                 type: "normal",
               })
+              : axios.post(`${metric.endpoint}`, {
+                team: url.split(" ")[1],
+                group: url.split(" ")[0]
+              })
+            ) 
             : axios.get(`${metric.endpoint + url}`);
         data
           .then(async (res) => {
@@ -139,7 +146,7 @@ const TaigaService: React.FC = () => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Taiga Project URL
+                      Taiga Project URL (For CFD please provide slug in the following format: GroupName-TeamName)
                     </label>
                     <div className="mt-1">
                       <input

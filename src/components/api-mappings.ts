@@ -25,10 +25,19 @@ const data = {
     requestPending: "Generating Viz for Niko Niko",
     localForageKey: "nikoNiko",
   },
+  cfd: {
+    name: "CFD",
+    endpoint: "https://cfd-srvce.herokuapp.com/csv",
+    requestSuccess: "Viz for CFD is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for CFD",
+    localForageKey: "cfd",
+  },
 };
 
 export const map = {
   "Lead Time": data.leadTime,
-  Happiness: data.nikoNiko,
+  "Happiness": data.nikoNiko,
   "Active Tasks": data.activeTasks,
+  "CFD": data.cfd
 };
