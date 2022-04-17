@@ -8,6 +8,7 @@ import {
   XIcon,
   CollectionIcon,
   ClockIcon,
+  BriefcaseIcon
 } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
@@ -47,6 +48,12 @@ const navigation = [
     name: "CFD",
     href: "/cummulative-flow-diagram",
     icon: CollectionIcon,
+    current: false,
+  },
+  {
+    name: "Work in Progress",
+    href: "/work-in-progress",
+    icon: BriefcaseIcon,
     current: false,
   },
 ];

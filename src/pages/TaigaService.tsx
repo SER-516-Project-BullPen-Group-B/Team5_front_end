@@ -13,13 +13,7 @@ const TaigaService: React.FC = () => {
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = [
-    "Lead Time",
-    "Active Tasks",
-    "Cycle Time",
-    "Happiness",
-    "CFD",
-  ];
+  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness", "CFD", "WIP"];
   const metric = map[select];
   console.log(map, metric, select);
   const handleSubmit = (e) => {
@@ -39,7 +33,8 @@ const TaigaService: React.FC = () => {
           select === "Lead Time" ||
           select === "CFD" ||
           select === "Cycle Time" ||
-          select === "Happiness"
+          select === "Happiness" ||
+          select === "WIP"
             ? select === "Lead Time" ||
               select === "Cycle Time" ||
               select === "Happiness"
@@ -160,7 +155,7 @@ const TaigaService: React.FC = () => {
                     >
                       Taiga Project Slug <br />
                       <p className="italic pt-2">
-                        (For CFD please provide the &lt;group-name&gt;
+                        (For CFD and WIP please provide the &lt;group-name&gt;
                         &lt;team-name&gt; instead of slug. For example: Group-B
                         Team-5)
                       </p>
