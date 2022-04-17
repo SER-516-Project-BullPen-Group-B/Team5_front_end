@@ -43,6 +43,14 @@ const data = {
     requestPending: "Generating Viz for CFD",
     localForageKey: "cfd",
   },
+  wip: {
+    name: "WIP",
+    endpoint:  "https://cfd-srvce.herokuapp.com/csv",
+    requestSuccess: "Viz for WIP is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for WIP",
+    localForageKey: "wip",
+  },
 };
 
 export const map = {
@@ -51,4 +59,5 @@ export const map = {
   "Active Tasks": data.activeTasks,
   "CFD": data.cfd,
   'Cycle Time': data.cycleTime,
+  "WIP": data.wip,
 };

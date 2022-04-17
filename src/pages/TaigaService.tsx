@@ -30,7 +30,7 @@ const TaigaService: React.FC = () => {
       );
       try {
         const data =
-          select === "Lead Time" || select === "CFD" || select === "Cycle Time"
+          select === "Lead Time" || select === "CFD" || select === "Cycle Time" || select == "WIP"
             ? (
               select === "Lead Time" || select === "Cycle Time"
               ? axios.post(`${metric.endpoint + url}`, {
@@ -149,7 +149,7 @@ const TaigaService: React.FC = () => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Taiga Project URL <br/>(For CFD please provide the &quot;GroupName TeamName&quot; instead of slug. For example: Group-B Team-5)
+                      Taiga Project URL <br/>(For CFD and WIP please provide the &quot;GroupName TeamName&quot; instead of slug. For example: Group-B Team-5)
                     </label>
                     <div className="mt-1">
                       <input
