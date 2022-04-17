@@ -13,7 +13,7 @@ const TaigaService: React.FC = () => {
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness"];
+  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness", "CFD"];
   const metric = map[select];
   console.log(map, metric, select);
   const handleSubmit = (e) => {
@@ -29,17 +29,24 @@ const TaigaService: React.FC = () => {
           formattedDate.getFullYear()
       );
       try {
-        // eslint-disable-next-line
-        let data;
-        if (select === "Lead Time" || select === "Cycle Time") {
-          data = axios.post(`${metric.endpoint + url}`, {
-            username: username,
-            password: password,
-            type: "normal",
-          });
-        } else {
-          axios.get(`${metric.endpoint + url}`);
-        }
+        const data =
+          select === "Lead Time" || select === "CFD" || select === "Cycle Time"
+            ? (
+              select === "Lead Time" || select === "Cycle Time"
+              ? axios.post(`${metric.endpoint + url}`, {
+                username: username,
+                password: password,
+                type: "normal",
+              })
+              : axios.post(`${metric.endpoint}`, {
+                username: username,
+                password: password,
+                type: "normal",
+                team: url.split(" ")[1],
+                group: url.split(" ")[0]
+              })
+            ) 
+            : axios.get(`${metric.endpoint + url}`);
         data
           .then(async (res) => {
             localForage.setItem(metric.localForageKey, res.data);
@@ -142,7 +149,7 @@ const TaigaService: React.FC = () => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Taiga Project Slug
+                      Taiga Project URL <br/>(For CFD please provide the &quot;GroupName TeamName&quot; instead of slug. For example: Group-B Team-5)
                     </label>
                     <div className="mt-1">
                       <input

@@ -8,9 +8,11 @@ import LeadTime from "./pages/LeadTime";
 import Nav from "./components/Nav";
 import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
+import CFD from './pages/CFD';
 import Niko from "./pages/Niko-Niko";
-import CFD from "./pages/CFD2";
+import CFD2 from "./pages/CFD2";
 import ActiveTasks from "./pages/ActiveTasks";
+import WIP from "./pages/WIP";
 import CycleTime from "./pages/CycleTime";
 
 ReactDOM.render(
@@ -27,7 +29,9 @@ ReactDOM.render(
         />
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
         <Route path="active-tasks" element={<Nav render={<ActiveTasks />} />} />
-        <Route path="cfd" element={<Nav render={<CFD />} />} />
+        <Route path="work-in-progress" element={<Nav render={<WIP />} />} />
+        <Route path="cfd" element={<Nav render={<CFD2 />} />} />
+        <Route path="cummulative-flow-diagram" element={<Nav render={<CFD />} /> } />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
