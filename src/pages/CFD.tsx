@@ -10,6 +10,7 @@ const CFD : React.FC = () => {
     const types = ["Line"]
 
     useEffect(() => {
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         localforage.getItem("cfd", (err, value: any) => {
             const labels = Object.keys(value);
             const newCount: number[] = [];
