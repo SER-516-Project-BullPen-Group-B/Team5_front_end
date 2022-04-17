@@ -17,9 +17,19 @@ const data = {
     requestPending: "Generating Viz for Active Tasks",
     localForageKey: "activeTasks",
   },
+  cycleTime: {
+    name: "Cycle Time",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/cycle-time?slug=",
+    requestSuccess: "Viz for Cycle Time is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for Cycle Time",
+    localForageKey: "cycleTime"
+  },
   nikoNiko: {
     name: "Niko Niko",
-    endpoint: "https://itiparna.pythonanywhere.com/happiness/",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/niko-niko?slug=",
     requestSuccess: "Viz for Niko Niko is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Niko Niko",
@@ -39,5 +49,6 @@ export const map = {
   "Lead Time": data.leadTime,
   "Happiness": data.nikoNiko,
   "Active Tasks": data.activeTasks,
-  "CFD": data.cfd
+  "CFD": data.cfd,
+  'Cycle Time': data.cycleTime,
 };

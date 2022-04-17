@@ -13,6 +13,7 @@ import Niko from "./pages/Niko-Niko";
 import CFD2 from "./pages/CFD2";
 import ActiveTasks from "./pages/ActiveTasks";
 import WIP from "./pages/WIP";
+import CycleTime from "./pages/CycleTime";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path="/" element={<Nav render={<App />} />} />
         <Route path="taiga-service" element={<Nav render={<Service />} />} />
         <Route path="lead-time" element={<Nav render={<LeadTime />} />} />
+        <Route path="cycle-time" element={<Nav render={<CycleTime />} />} />
         <Route
           path="tasks-per-day"
           element={<Nav render={<NoOfTasksPerDay />} />}
