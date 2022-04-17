@@ -26,6 +26,12 @@ const navigation = [
     current: false,
   },
   {
+    name: "Cycle Time",
+    href: '/cycle-time',
+    icon: FolderIcon,
+    current: false,
+  },
+  {
     name: "Active tasks",
     href: "/active-tasks",
     icon: ClockIcon,
@@ -39,7 +45,7 @@ const navigation = [
   },
   {
     name: "CFD",
-    href: "/cfd",
+    href: "/cummulative-flow-diagram",
     icon: CollectionIcon,
     current: false,
   },
