@@ -24,7 +24,7 @@ const data = {
     requestSuccess: "Viz for Cycle Time is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Cycle Time",
-    localForageKey: "cycleTime"
+    localForageKey: "cycleTime",
   },
   nikoNiko: {
     name: "Niko Niko",
@@ -47,8 +47,8 @@ const data = {
 
 export const map = {
   "Lead Time": data.leadTime,
-  "Happiness": data.nikoNiko,
+  Happiness: data.nikoNiko,
   "Active Tasks": data.activeTasks,
-  "CFD": data.cfd,
-  'Cycle Time': data.cycleTime,
+  CFD: data.cfd,
+  "Cycle Time": data.cycleTime,
 };
