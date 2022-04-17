@@ -155,7 +155,7 @@ const TaigaService: React.FC = () => {
                     >
                       Taiga Project Slug <br />
                       <p className="italic pt-2">
-                        (For CFD please provide the &lt;group-name&gt;
+                        (For CFD and WIP please provide the &lt;group-name&gt;
                         &lt;team-name&gt; instead of slug. For example: Group-B
                         Team-5)
                       </p>
