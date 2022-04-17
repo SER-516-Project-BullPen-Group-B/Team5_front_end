@@ -1,16 +1,7 @@
-import Nav from "../components/NavBar";
+import localforage from "localforage";
+import WIPComp from "../components/WIPChart";
 import DropDown from "../components/DropDown";
-import { 
-    Chart as ChartJS,
-    Title,
-    Tooltip,
-    Legend,
-    PointElement,
-    LineElement 
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-import '../styles/WIP.css'
-ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement);
+import { useState, useEffect } from "react";
 
 const data = {
     labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
@@ -27,43 +18,37 @@ const data = {
     ]
 };
 
-const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top" as const,
-      },
-      title: {
-        display: true,
-        text: "Work in Progress",
-      },
-    },
-    scales: {
-      x: {
-        stacked: true,
-      },
-      y: {
-        stacked: true,
-      },
-    },
-  };
+const WIP: React.FC = () => {
 
+  const [data, setData] = useState("");
+  const [select, setSelect] = useState("Line");
+  const types = ["Line"];
 
-function WIP() {
-    return (
-        <div>
-            <Nav />
+  useEffect(() => {
+    
+  }, []);
+
+  return (
+    <div>
             <div className="flex justify-end ...">
                 <div className="m-6">
-                {" "}
-                <DropDown />
+                    {" "}
+                    <DropDown values={types} select={setSelect} title={select}></DropDown>
                 </div>
             </div>
             <div className="m-4">
-                <Line options={options} data={data} />
+                {
+                    data ? (
+                        <WIPComp data={data} />
+                    ) : (
+                        <div>
+                            Data not available ...
+                        </div>
+                    )
+                }
             </div>
         </div>
-    );
+  );
 }
 
 export default WIP;

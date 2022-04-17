@@ -13,7 +13,7 @@ const TaigaService: React.FC = () => {
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness"];
+  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness", "WIP"];
   const metric = map[select];
   console.log(map, metric, select);
   const handleSubmit = (e) => {
