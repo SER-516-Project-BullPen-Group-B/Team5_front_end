@@ -30,22 +30,26 @@ const TaigaService: React.FC = () => {
       );
       try {
         const data =
-          select === "Lead Time" || select === "CFD" || select === "Cycle Time" || select == "WIP"
-            ? (
-              select === "Lead Time" || select === "Cycle Time"
+          select === "Lead Time" ||
+          select === "CFD" ||
+          select === "Cycle Time" ||
+          select === "Happiness" ||
+          select === "WIP"
+            ? select === "Lead Time" ||
+              select === "Cycle Time" ||
+              select === "Happiness"
               ? axios.post(`${metric.endpoint + url}`, {
-                username: username,
-                password: password,
-                type: "normal",
-              })
+                  username: username,
+                  password: password,
+                  type: "normal",
+                })
               : axios.post(`${metric.endpoint}`, {
-                username: username,
-                password: password,
-                type: "normal",
-                team: url.split(" ")[1],
-                group: url.split(" ")[0]
-              })
-            ) 
+                  username: username,
+                  password: password,
+                  type: "normal",
+                  team: url.split(" ")[1],
+                  group: url.split(" ")[0],
+                })
             : axios.get(`${metric.endpoint + url}`);
         data
           .then(async (res) => {
@@ -149,7 +153,12 @@ const TaigaService: React.FC = () => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Taiga Project URL <br/>(For CFD and WIP please provide the &quot;GroupName TeamName&quot; instead of slug. For example: Group-B Team-5)
+                      Taiga Project Slug <br />
+                      <p className="italic pt-2">
+                        (For CFD please provide the &lt;group-name&gt;
+                        &lt;team-name&gt; instead of slug. For example: Group-B
+                        Team-5)
+                      </p>
                     </label>
                     <div className="mt-1">
                       <input
