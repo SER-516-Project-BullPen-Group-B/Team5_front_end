@@ -2,7 +2,7 @@ import BarChart from "../components/BarChart";
 import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
-import PolarChart from "../components/PolarChart";
+import LineChart from "../components/LineChart";
 
 const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
@@ -14,13 +14,8 @@ const CycleTime: React.FC = () => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
       const labels = Object.keys(value);
-      const color = (select==="PolarArea")?[
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(75, 192, 192, 0.5)',
-        'rgba(153, 102, 255, 0.5)',
-        'rgba(255, 159, 64, 0.5)',
+      const color = (select==="Line")?[
+        'rgba(75, 0, 130, 0.7)',
       ]:["rgba(07, 90, 128, 0.6)"];    
       const data = {
         labels,
@@ -29,7 +24,7 @@ const CycleTime: React.FC = () => {
             label: "Cycle Time",
             data: Object.values(value),
             backgroundColor: color,
-            borderWidth: 1,
+            borderWidth: 3,
           },
         ],
       };
@@ -47,7 +42,7 @@ const CycleTime: React.FC = () => {
       </div>
       <div className="m-4">
         {select === "Bar" ? data ? <BarChart data={data} /> : <div>Data not available ...</div>:null}
-        {select === "PolarArea" ? data ? <PolarChart data={data} /> : <div>Data not available ...</div>:null}
+        {select === "Line" ? data ? <LineChart data={data} /> : <div>Data not available ...</div>:null}
       </div>
     </div>
   );

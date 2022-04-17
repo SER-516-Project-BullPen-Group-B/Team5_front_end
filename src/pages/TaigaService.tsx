@@ -29,19 +29,9 @@ const TaigaService: React.FC = () => {
           formattedDate.getFullYear()
       );
       try {
-<<<<<<< HEAD
-        const data =
-          select === "Lead Time"
-            ? axios.post(`${metric.endpoint + url}`, {
-                username: username,
-                password: password,
-                type: "normal",
-              })
-            : axios.get(`${metric.endpoint + url}`);
-=======
         // eslint-disable-next-line
         let data;
-        if (select === "Lead Time") {
+        if (select === "Lead Time" || select === "Cycle Time") {
           data = axios.post(`${metric.endpoint + url}`, {
             username: username,
             password: password,
@@ -50,7 +40,6 @@ const TaigaService: React.FC = () => {
         } else {
           axios.get(`${metric.endpoint + url}`);
         }
->>>>>>> interface-update
         data
           .then(async (res) => {
             localForage.setItem(metric.localForageKey, res.data);
