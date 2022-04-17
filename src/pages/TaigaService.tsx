@@ -39,8 +39,8 @@ const TaigaService: React.FC = () => {
                 type: "normal",
               })
               : axios.post(`${metric.endpoint}`, {
-                team: "Team-5",
-                group: "Group-B"
+                team: url.split(" ")[1],
+                group: url.split(" ")[0]
               })
             ) 
             : axios.get(`${metric.endpoint + url}`);
