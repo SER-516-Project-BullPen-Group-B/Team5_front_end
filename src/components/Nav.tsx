@@ -7,7 +7,7 @@ import {
   UsersIcon,
   XIcon,
   CollectionIcon,
-  DocumentReportIcon,
+  // DocumentReportIcon,
   ClockIcon,
   BriefcaseIcon,
 } from "@heroicons/react/outline";
@@ -33,12 +33,12 @@ const navigation = [
     icon: FolderIcon,
     current: false,
   },
-  {
-    name: "Active tasks",
-    href: "/active-tasks",
-    icon: DocumentReportIcon,
-    current: false,
-  },
+  // {
+  //   name: "Active tasks",
+  //   href: "/active-tasks",
+  //   icon: DocumentReportIcon,
+  //   current: false,
+  // },
   {
     name: "Niko Niko",
     href: "/niko-niko",
