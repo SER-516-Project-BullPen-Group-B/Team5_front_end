@@ -52,7 +52,6 @@ export const data = {
 
 export default function NoOfTasksPerDay() {
   const [select, setSelect] = useState("Charts");
-  console.log(select);
   return (
     <div>
       <div className="flex justify-end ...">

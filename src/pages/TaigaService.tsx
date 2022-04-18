@@ -8,26 +8,29 @@ import DropDown from "../components/DropDown";
 import { map } from "../components/api-mappings";
 
 const TaigaService: React.FC = () => {
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = ["Lead Time", "Active Tasks", "Cycle Time", "Happiness", "CFD", "WIP"];
-  const metric = map[select];
-  console.log(map, metric, select);
+  const metrics = [
+    "Lead Time",
+    "Active Tasks",
+    "Cycle Time",
+    "Happiness",
+    "CFD",
+    "WIP",
+  ];
   const handleSubmit = (e) => {
     e.preventDefault();
     if (select !== "Metrics") {
       const metric = map[select];
-      const formattedDate = new Date(Date.parse(date.toString()));
-      console.log(
-        formattedDate.getMonth() +
-          "/" +
-          formattedDate.getDate() +
-          "/" +
-          formattedDate.getFullYear()
-      );
+      for (const item of Object.keys(map)) {
+        localForage.removeItem(map[item].localForageKey);
+      }
+      // const formattedDate = new Date(Date.parse(date.toString()));
+
       try {
         const data =
           select === "Lead Time" ||
@@ -53,11 +56,21 @@ const TaigaService: React.FC = () => {
             : axios.get(`${metric.endpoint + url}`);
         data
           .then(async (res) => {
-            localForage.setItem(metric.localForageKey, res.data);
-            console.log(res.data);
+            if (res.status === 200) {
+              localForage.setItem(metric.localForageKey, res.data);
+            }
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((_err) => {
+            toast.error("Try again with valid credentials or slug!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           });
         toast.promise(data, {
           pending: metric.requestPending,
@@ -66,7 +79,7 @@ const TaigaService: React.FC = () => {
         });
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          console.log("error");
+          console.log(error);
         } else {
           console.log(error);
         }
