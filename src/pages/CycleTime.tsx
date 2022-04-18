@@ -2,36 +2,30 @@ import BarChart from "../components/BarChart";
 import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
-import PolarChart from "../components/PolarChart";
+import LineChart from "../components/LineChart";
 
-const LeadTime: React.FC = () => {
+const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "PolarArea"];
+  const types = ["Bar", "Line"];
 
+  console.log(select);
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
-    localForage.getItem("leadTime", (err, value: any) => {
+    localForage.getItem("cycleTime", (err, value: any) => {
       const labels = Object.keys(value);
       const color =
-        select === "PolarArea"
-          ? [
-              "rgba(255, 99, 132, 0.5)",
-              "rgba(54, 162, 235, 0.5)",
-              "rgba(255, 206, 86, 0.5)",
-              "rgba(75, 192, 192, 0.5)",
-              "rgba(153, 102, 255, 0.5)",
-              "rgba(255, 159, 64, 0.5)",
-            ]
+        select === "Line"
+          ? ["rgba(75, 0, 130, 0.7)"]
           : ["rgba(07, 90, 128, 0.6)"];
       const data = {
         labels,
         datasets: [
           {
-            label: "Lead Time",
+            label: "Cycle Time",
             data: Object.values(value),
             backgroundColor: color,
-            borderWidth: 1,
+            borderWidth: 3,
           },
         ],
       };
@@ -58,9 +52,9 @@ const LeadTime: React.FC = () => {
             </div>
           )
         ) : null}
-        {select === "PolarArea" ? (
+        {select === "Line" ? (
           data ? (
-            <PolarChart data={data} />
+            <LineChart data={data} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
@@ -73,4 +67,4 @@ const LeadTime: React.FC = () => {
   );
 };
 
-export default LeadTime;
+export default CycleTime;

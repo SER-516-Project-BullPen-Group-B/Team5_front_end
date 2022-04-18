@@ -7,6 +7,9 @@ import {
   UsersIcon,
   XIcon,
   CollectionIcon,
+  DocumentReportIcon,
+  ClockIcon,
+  BriefcaseIcon,
 } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
@@ -21,7 +24,19 @@ const navigation = [
   {
     name: "Lead Time",
     href: "/lead-time",
+    icon: ClockIcon,
+    current: false,
+  },
+  {
+    name: "Cycle Time",
+    href: "/cycle-time",
     icon: FolderIcon,
+    current: false,
+  },
+  {
+    name: "Active tasks",
+    href: "/active-tasks",
+    icon: DocumentReportIcon,
     current: false,
   },
   {
@@ -32,14 +47,14 @@ const navigation = [
   },
   {
     name: "CFD",
-    href: "/cfd",
+    href: "/cummulative-flow-diagram",
     icon: CollectionIcon,
     current: false,
   },
   {
-    name: "Active tasks",
-    href: "/active-tasks",
-    icon: XIcon,
+    name: "Work in Progress",
+    href: "/work-in-progress",
+    icon: BriefcaseIcon,
     current: false,
   },
 ];

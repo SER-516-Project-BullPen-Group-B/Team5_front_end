@@ -28,7 +28,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Lead Time per User Story",
+      text: "Per User Story",
     },
   },
 };

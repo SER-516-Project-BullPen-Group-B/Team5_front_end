@@ -2,27 +2,25 @@ import { useState, useEffect } from "react";
 import localForage from "localforage";
 
 const Table = () => {
-  /* eslint-disable @typescript-eslint/no-explicit-any */
+  // eslint-disable-next-line
   const [data, setData] = useState<any | null>();
-
   useEffect(() => {
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
-    localForage.getItem("nikoNiko", (err, value: any) => {
-      const userData: { value: string; name: string; task_name: string }[] = [];
-      value.forEach(
-        (user: { value: string; name: string; task_name: string }) => {
-          let userObj: { value: string; name: string; task_name: string };
-          if ("19358" in user) {
-            userObj = {
-              value: user["19358"],
-              name: user["username"],
-              task_name: user["task_name"],
-            };
-            userData.push(userObj);
+    // eslint-disable-next-line
+    localForage.getItem("nikoNiko", (err, data: any) => {
+      // eslint-disable-next-line
+      const tableData: any[] = [];
+      data.forEach((item) => {
+        // eslint-disable-next-line
+        const row: any[] = [];
+        // eslint-disable-next-line
+        for (const [key, value] of Object.entries(item)) {
+          if (typeof value === "string") {
+            row.push(value);
           }
         }
-      );
-      setData(value);
+        tableData.push(row);
+      });
+      setData(tableData);
     });
   }, []);
 
@@ -65,44 +63,39 @@ const Table = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {data ? (
-                    data.map(
-                      (
-                        user: {
-                          "19358": string;
-                          username: string;
-                          task_name: string;
-                        },
-                        i: number
-                      ) => {
-                        return (
-                          <tr key={i} className="divide-x divide-gray-200">
-                            <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
-                              {user.username}
-                            </td>
-                            <td className="whitespace-nowrap p-4 text-sm text-gray-500">
-                              {user.task_name}
-                            </td>
-                            <td className="whitespace-nowrap p-4 text-sm text-gray-500">
-                              {user["19358"] === "happy :-)" ? (
-                                "😄"
-                              ) : user["19358"] === "sad :-( " ? (
-                                "😞"
-                              ) : user["19358"] === "confused :-/" ? (
-                                "😐"
-                              ) : user["19358"] === "mad  >:-{}" ? (
-                                "😡"
-                              ) : (
-                                <></>
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      }
-                    )
+                    data.map((user: string[], i: number) => {
+                      return (
+                        <tr key={i} className="divide-x divide-gray-200">
+                          <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
+                            {user[0]}
+                          </td>
+                          <td className="whitespace-nowrap p-4 text-sm text-gray-500">
+                            {user[1]}
+                          </td>
+                          <td className="whitespace-nowrap p-4 text-sm text-gray-500">
+                            {user[2] === "happy :-)" || user[2] === "Happy" ? (
+                              "😄"
+                            ) : user[2] === "sad :-( " || user[2] === "Sad" ? (
+                              "😞"
+                            ) : user[2] === "confused :-/" ? (
+                              "😐"
+                            ) : user[2] === "mad  >:-{}" ||
+                              user[2] === "Mad" ? (
+                              "😡"
+                            ) : (
+                              <></>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })
                   ) : (
                     <>
                       <tr>
-                        <td>Loading ...</td>
+                        <td>
+                          Data not available, please make a valid request before
+                          you visit this page.
+                        </td>
                       </tr>
                     </>
                   )}
