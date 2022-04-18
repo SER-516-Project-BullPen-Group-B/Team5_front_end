@@ -14,14 +14,7 @@ const TaigaService: React.FC = () => {
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = [
-    "Lead Time",
-    "Active Tasks",
-    "Cycle Time",
-    "Happiness",
-    "CFD",
-    "WIP",
-  ];
+  const metrics = ["Lead Time", "Cycle Time", "Niko Niko", "CFD", "WIP"];
   const handleSubmit = (e) => {
     e.preventDefault();
     if (select !== "Metrics") {
@@ -34,26 +27,20 @@ const TaigaService: React.FC = () => {
       try {
         const data =
           select === "Lead Time" ||
-          select === "CFD" ||
           select === "Cycle Time" ||
-          select === "Happiness" ||
-          select === "WIP"
-            ? select === "Lead Time" ||
-              select === "Cycle Time" ||
-              select === "Happiness"
-              ? axios.post(`${metric.endpoint + url}`, {
-                  username: username,
-                  password: password,
-                  type: "normal",
-                })
-              : axios.post(`${metric.endpoint}`, {
-                  username: username,
-                  password: password,
-                  type: "normal",
-                  team: url.split(" ")[1],
-                  group: url.split(" ")[0],
-                })
-            : axios.get(`${metric.endpoint + url}`);
+          select === "Happiness"
+            ? axios.post(`${metric.endpoint + url}`, {
+                username: username,
+                password: password,
+                type: "normal",
+              })
+            : axios.post(`${metric.endpoint}`, {
+                username: username,
+                password: password,
+                type: "normal",
+                team: url.split(" ")[1],
+                group: url.split(" ")[0],
+              });
         data
           .then(async (res) => {
             if (res.status === 200) {
