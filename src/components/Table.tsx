@@ -4,11 +4,9 @@ import localForage from "localforage";
 const Table = () => {
   // eslint-disable-next-line
   const [data, setData] = useState<any | null>();
-  console.log(data);
   useEffect(() => {
     // eslint-disable-next-line
     localForage.getItem("nikoNiko", (err, data: any) => {
-      console.log(data);
       // eslint-disable-next-line
       const tableData: any[] = [];
       data.forEach((item) => {
@@ -94,7 +92,10 @@ const Table = () => {
                   ) : (
                     <>
                       <tr>
-                        <td>Loading ...</td>
+                        <td>
+                          Data not available, please make a valid request before
+                          you visit this page.
+                        </td>
                       </tr>
                     </>
                   )}

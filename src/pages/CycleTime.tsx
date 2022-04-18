@@ -7,16 +7,17 @@ import LineChart from "../components/LineChart";
 const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "Line", "Radar", "PolarArea", "Pie", "Doughnut"];
-  
+  const types = ["Bar", "Line"];
+
   console.log(select);
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
       const labels = Object.keys(value);
-      const color = (select==="Line")?[
-        'rgba(75, 0, 130, 0.7)',
-      ]:["rgba(07, 90, 128, 0.6)"];    
+      const color =
+        select === "Line"
+          ? ["rgba(75, 0, 130, 0.7)"]
+          : ["rgba(07, 90, 128, 0.6)"];
       const data = {
         labels,
         datasets: [
@@ -41,8 +42,26 @@ const CycleTime: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        {select === "Bar" ? data ? <BarChart data={data} /> : <div>Data not available ...</div>:null}
-        {select === "Line" ? data ? <LineChart data={data} /> : <div>Data not available ...</div>:null}
+        {select === "Bar" ? (
+          data ? (
+            <BarChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Line" ? (
+          data ? (
+            <LineChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
       </div>
     </div>
   );

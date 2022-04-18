@@ -7,7 +7,7 @@ import PolarChart from "../components/PolarChart";
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "Line", "Radar", "PolarArea", "Pie", "Doughnut"];
+  const types = ["Bar", "PolarArea"];
 
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
@@ -52,14 +52,20 @@ const LeadTime: React.FC = () => {
           data ? (
             <BarChart data={data} />
           ) : (
-            <div>Data not available ...</div>
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
           )
         ) : null}
         {select === "PolarArea" ? (
           data ? (
             <PolarChart data={data} />
           ) : (
-            <div>Data not available ...</div>
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
           )
         ) : null}
       </div>
