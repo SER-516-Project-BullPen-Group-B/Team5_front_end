@@ -45,7 +45,7 @@ const data = {
   },
   wip: {
     name: "WIP",
-    endpoint:  "https://cfd-srvce.herokuapp.com/csv",
+    endpoint: "https://cfd-srvce.herokuapp.com/csv",
     requestSuccess: "Viz for WIP is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for WIP",
@@ -55,9 +55,9 @@ const data = {
 
 export const map = {
   "Lead Time": data.leadTime,
-  Happiness: data.nikoNiko,
+  "Niko Niko": data.nikoNiko,
   "Active Tasks": data.activeTasks,
-  "CFD": data.cfd,
-  'Cycle Time': data.cycleTime,
-  "WIP": data.wip,
+  CFD: data.cfd,
+  "Cycle Time": data.cycleTime,
+  WIP: data.wip,
 };

@@ -28,7 +28,7 @@ const TaigaService: React.FC = () => {
         const data =
           select === "Lead Time" ||
           select === "Cycle Time" ||
-          select === "Happiness"
+          select === "Niko Niko"
             ? axios.post(`${metric.endpoint + url}`, {
                 username: username,
                 password: password,
