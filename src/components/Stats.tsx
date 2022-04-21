@@ -2,7 +2,7 @@ import { metrics } from "../utils/content";
 
 export default function Stats() {
   return (
-    <div className="my-4 relative bg-gray-900">
+    <div className="my-4 lg:m-4 relative bg-gray-900">
       <div className="h-80 absolute inset-x-0 bottom-0 xl:top-0 xl:h-full">
         <div className="h-full w-full xl:grid xl:grid-cols-2">
           <div className="h-full xl:relative xl:col-start-2">
