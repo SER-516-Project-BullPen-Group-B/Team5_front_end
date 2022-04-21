@@ -6,7 +6,7 @@ import CFDComp from "../components/CFD";
 const CFD: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Line");
-  const types = ["Line"];
+  const types = ["Line", "Radar"];
 
   useEffect(() => {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -77,14 +77,22 @@ const CFD: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        {data ? (
-          <CFDComp data={data} />
-        ) : (
+        {select === "Line" ? (
+          data ? (
+            <CFDComp data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Radar" ? (
           <div>
             Data not available, please make a valid request before you visit
             this page.
-          </div>
-        )}
+        </div>
+        ) : null}
       </div>
     </div>
   );
