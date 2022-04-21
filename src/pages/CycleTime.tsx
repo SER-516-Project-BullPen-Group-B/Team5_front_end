@@ -9,7 +9,6 @@ const CycleTime: React.FC = () => {
   const [select, setSelect] = useState("Bar");
   const types = ["Bar", "Line"];
 
-  console.log(select);
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
