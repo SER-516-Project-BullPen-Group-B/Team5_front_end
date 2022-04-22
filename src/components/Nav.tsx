@@ -99,7 +99,7 @@ const Nav: React.FC<NavProps> = ({ render }) => {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <div className="relative flex-1 flex flex-col max-w-xs w-full bg-indigo-700">
+              <div className="relative flex-1 flex flex-col max-w-xs w-full bg-cyan-700">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -137,12 +137,12 @@ const Nav: React.FC<NavProps> = ({ render }) => {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          "text-white hover:bg-indigo-600 hover:bg-opacity-75",
+                          "text-white hover:bg-cyan-600 hover:bg-opacity-75",
                           "group flex items-center px-2 py-2 text-base font-medium rounded-md"
                         )}
                       >
                         <item.icon
-                          className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
+                          className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-300"
                           aria-hidden="true"
                         />
                         {item.name}
@@ -157,7 +157,7 @@ const Nav: React.FC<NavProps> = ({ render }) => {
         </Transition.Root>
 
         <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-          <div className="flex-1 flex flex-col min-h-0 bg-indigo-700">
+          <div className="flex-1 flex flex-col min-h-0 bg-cyan-700">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4">
                 <img
@@ -172,12 +172,12 @@ const Nav: React.FC<NavProps> = ({ render }) => {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      "text-white hover:bg-indigo-600 hover:bg-opacity-75",
+                      "text-white hover:bg-cyan-600 hover:bg-opacity-75",
                       "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                     )}
                   >
                     <item.icon
-                      className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300"
+                      className="mr-3 flex-shrink-0 h-6 w-6 text-cyan-300"
                       aria-hidden="true"
                     />
                     {item.name}
@@ -191,7 +191,7 @@ const Nav: React.FC<NavProps> = ({ render }) => {
           <div className="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-gray-100">
             <button
               type="button"
-              className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>

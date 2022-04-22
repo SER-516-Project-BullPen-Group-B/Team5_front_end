@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 interface CalendarProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   date: any;
 }
 

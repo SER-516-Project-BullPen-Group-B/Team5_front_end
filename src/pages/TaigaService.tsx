@@ -5,7 +5,7 @@ import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import DropDown from "../components/DropDown";
-import { map } from "../components/api-mappings";
+import { map } from "../utils/api-mappings";
 
 const TaigaService: React.FC = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
