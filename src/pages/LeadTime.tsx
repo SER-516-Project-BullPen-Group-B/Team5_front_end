@@ -3,18 +3,19 @@ import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import PolarChart from "../components/PolarChart";
+import DoughnutChart from "../components/DoughnutChart";
 
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "PolarArea"];
+  const types = ["Bar", "PolarArea","Doughnut"];
 
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("leadTime", (err, value: any) => {
       const labels = Object.keys(value);
       const color =
-        select === "PolarArea"
+        select === "PolarArea" || select === "Doughnut"
           ? [
               "rgba(255, 99, 132, 0.5)",
               "rgba(54, 162, 235, 0.5)",
@@ -61,6 +62,16 @@ const LeadTime: React.FC = () => {
         {select === "PolarArea" ? (
           data ? (
             <PolarChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Doughnut" ? (
+          data ? (
+            <DoughnutChart data={data} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
