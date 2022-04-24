@@ -8,13 +8,27 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+export const options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    resizeDelay: 40,
+    plugins: {
+        legend: {
+            position: 'top' as const,
+        },
+        title: {
+            display: true,
+            text: 'Per User Story'
+        }
+    }
+}
 
 interface DoughnutChartProps {
     data: string;
 }
 
 const DoughnutChart: React.FC<DoughnutChartProps> = ({ data }) => {
-  return <Doughnut data={JSON.parse(data)} />;
+  return <Doughnut options={options} data={JSON.parse(data)} />;
 }
 
 DoughnutChart.propTypes = {
