@@ -7,25 +7,25 @@ import {
 
 export const features = [
   {
-    name: "Metric",
+    name: "Metric 1",
     description:
       "lorum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     icon: InboxIcon,
   },
   {
-    name: "Metric",
+    name: "Metric 2",
     description:
       "loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     icon: UsersIcon,
   },
   {
-    name: "Metric",
+    name: "Metric 3",
     description:
       "loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     icon: TrashIcon,
   },
   {
-    name: "Metric",
+    name: "Metric 4",
     description:
       "loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     icon: PencilAltIcon,
