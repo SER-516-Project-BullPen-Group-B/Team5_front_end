@@ -3,27 +3,23 @@ import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import PolarChart from "../components/PolarChart";
-
+import DoughnutChart from "../components/DoughnutChart";
+import randomColor from 'randomcolor';
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
-  const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "PolarArea"];
+  const [select, setSelect] = useState("Doughnut");
+  const types = ["Bar", "PolarArea","Doughnut"];
 
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("leadTime", (err, value: any) => {
       const labels = Object.keys(value);
-      const color =
-        select === "PolarArea"
-          ? [
-              "rgba(255, 99, 132, 0.5)",
-              "rgba(54, 162, 235, 0.5)",
-              "rgba(255, 206, 86, 0.5)",
-              "rgba(75, 192, 192, 0.5)",
-              "rgba(153, 102, 255, 0.5)",
-              "rgba(255, 159, 64, 0.5)",
-            ]
-          : ["rgba(07, 90, 128, 0.6)"];
+      const color = randomColor({
+        count: select === "Bar"? 1 :Object.values(value).length,
+        format: 'rgba',
+        luminosity: 'dark',
+        alpha: 0.6,
+     });
       const data = {
         labels,
         datasets: [
@@ -61,6 +57,16 @@ const LeadTime: React.FC = () => {
         {select === "PolarArea" ? (
           data ? (
             <PolarChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Doughnut" ? (
+          data ? (
+            <DoughnutChart data={data} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
