@@ -4,7 +4,7 @@ import localForage from "localforage";
 import { useEffect, useState } from "react";
 import PolarChart from "../components/PolarChart";
 import DoughnutChart from "../components/DoughnutChart";
-let randomColor = require('randomcolor');
+import randomColor from 'randomcolor';
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Doughnut");
@@ -18,7 +18,7 @@ const LeadTime: React.FC = () => {
         count: select === "Bar"? 1 :Object.values(value).length,
         format: 'rgba',
         luminosity: 'dark',
-        alpha: '0.6',
+        alpha: 0.6,
      });
       const data = {
         labels,
