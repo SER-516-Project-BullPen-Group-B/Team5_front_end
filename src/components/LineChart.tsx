@@ -32,11 +32,22 @@ export const options = {
     },
   },
   scales: {
-    y: {
+    x:{
+      title:{
+        display:true,
+        text: "User Stories"
+      }
+    },
+    y:{
+      title:{
+        beginAtZero:true,
+        display:true,
+        text: "Days"
+      },
       min:0,
       max:20,
-    }
-  },
+    },
+  }
 };
 
 interface LineChartProps {

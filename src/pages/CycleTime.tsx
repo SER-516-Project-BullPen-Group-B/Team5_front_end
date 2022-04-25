@@ -3,11 +3,14 @@ import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import LineChart from "../components/LineChart";
+import { FunnelChart } from 'react-funnel-pipeline'
+import 'react-funnel-pipeline/dist/index.css'
 
 const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "Line"];
+  const types = ["Bar", "Line", "Funnel"];
+  const [funnelData, setFunnelData] = useState<{ name: string, value: number }[]>();
   const options = {
     responsive: true,
     plugins: {
@@ -19,34 +22,61 @@ const CycleTime: React.FC = () => {
         text: "Per User Story",
       },
     },
+    scales: {
+      x:{
+        title:{
+          display:true,
+          text: "User Stories"
+        }
+      },
+      y:{
+        title:{
+          beginAtZero:true,
+          display:true,
+          text: "Days"
+        }
+      },
+    }
   };
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
+      console.log(value)
       const labels = Object.keys(value);
-      const color =
-        select === "Line"
-          ? ["rgba(75, 0, 130, 0.7)"]
-          : ["rgba(07, 90, 128, 0.6)"];
       const data = {
         labels,
         datasets: [
           {
             label: "Cycle Time",
             data: Object.values(value),
-            backgroundColor: color,
+            backgroundColor: ["rgba(75, 0, 130, 0.7)"],
             borderWidth: 3,
           },
         ],
       };
-      setData(JSON.stringify(data));
+      let FunnelData: { name: string, value: number }[] = [];
+      if(select === "Funnel"){
+        for(let i = 0;i<Object.values(value).length;i++){
+         /* eslint-disable  @typescript-eslint/no-explicit-any */
+          let item:any = {};
+          item = {
+            "name" : Object.keys(value)[i],
+            "value" : Object.values(value)[i],
+          }
+          FunnelData = [item, ...FunnelData]
+        }
+      }
+      FunnelData.sort(function(a, b) { 
+        return a.value - b.value;
+      });
+      FunnelData = FunnelData.reverse();
+      select==="Funnel"?setFunnelData(FunnelData):setData(JSON.stringify(data));
     });
   }, [select]);
-
   return (
     <div>
       <div className="flex justify-end ...">
-        <div className="m-6">
+        <div className="m-6 pb-10">
           {" "}
           <DropDown values={types} select={setSelect} title={select} />
         </div>
@@ -65,6 +95,19 @@ const CycleTime: React.FC = () => {
         {select === "Line" ? (
           data ? (
             <LineChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Funnel" ? (
+          funnelData ? (
+            <div className="pt-10 mt-10">
+              <FunnelChart 
+              data={funnelData} />
+            </div>
           ) : (
             <div>
               Data not available, please make a valid request before you visit

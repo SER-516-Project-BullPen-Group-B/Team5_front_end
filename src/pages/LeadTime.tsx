@@ -21,6 +21,21 @@ const LeadTime: React.FC = () => {
         text: "Per User Story",
       },
     },
+    scales: {
+      x:{
+        title:{
+          display:true,
+          text: "User Stories"
+        }
+      },
+      y:{
+        title:{
+          beginAtZero:true,
+          display:true,
+          text: "Days"
+        }
+      },
+    }
   };
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
