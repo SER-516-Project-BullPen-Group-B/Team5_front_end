@@ -25,7 +25,7 @@ export const features = [
     icon: RefreshIcon,
   },
   {
-    name: "Accepte Work Spread",
+    name: "Accepted Work Spread",
     description:
       "It helps to check if a user is following a Divide and Conquer approach or collaborating with the team.",
     icon: BadgeCheckIcon,
