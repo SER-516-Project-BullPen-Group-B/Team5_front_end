@@ -20,40 +20,18 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-  },
-  scales: {
-    x:{
-      title:{
-        display:true,
-        text: "User Stories"
-      }
-    },
-    y:{
-      title:{
-        beginAtZero:true,
-        display:true,
-        text: "Days"
-      }
-    },
-  }
-};
-
 interface BarChartProps {
   data: string;
+  options: string;
 }
 
-const BarChart: React.FC<BarChartProps> = ({ data }) => {
-  return <Bar options={options} data={JSON.parse(data)} />;
+const BarChart: React.FC<BarChartProps> = ({ data, options }) => {
+  return <Bar options={JSON.parse(options)} data={JSON.parse(data)} />;
 };
 
 BarChart.propTypes = {
   data: PropTypes.string.isRequired,
+  options: PropTypes.string.isRequired,
 };
 
 export default BarChart;
