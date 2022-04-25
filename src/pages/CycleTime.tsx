@@ -10,7 +10,7 @@ const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
   const types = ["Bar", "Line", "Funnel"];
-  const [funnelData, setFunnelData] = useState([] as any);
+  const [funnelData, setFunnelData] = useState<{ name: string, value: number }[]>();
   const options = {
     responsive: true,
     plugins: {
@@ -41,6 +41,7 @@ const CycleTime: React.FC = () => {
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
+      console.log(value)
       const labels = Object.keys(value);
       const data = {
         labels,
@@ -53,17 +54,18 @@ const CycleTime: React.FC = () => {
           },
         ],
       };
-      let FunnelData: any[] = [];
+      let FunnelData: { name: string, value: number }[] = [];
       if(select === "Funnel"){
         for(let i = 0;i<Object.values(value).length;i++){
+         /* eslint-disable  @typescript-eslint/no-explicit-any */
           let item:any = {};
           item = {
             "name" : Object.keys(value)[i],
             "value" : Object.values(value)[i],
           }
           FunnelData = [item, ...FunnelData]
-        };
-      };
+        }
+      }
       FunnelData.sort(function(a, b) { 
         return a.value - b.value;
       });
