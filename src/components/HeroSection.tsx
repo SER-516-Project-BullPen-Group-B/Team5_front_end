@@ -16,7 +16,7 @@ export default function Hero() {
             <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
               <span className="block text-white">Take control of your</span>
               <span className="block text-cyan-100">
-                Software Development Project
+                Software Development Projects
               </span>
             </h1>
             <p className="mt-6 max-w-lg mx-auto text-center text-xl text-cyan-100 sm:max-w-3xl">
