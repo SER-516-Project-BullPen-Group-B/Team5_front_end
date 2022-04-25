@@ -4,22 +4,22 @@ import localForage from "localforage";
 import { useEffect, useState } from "react";
 import PolarChart from "../components/PolarChart";
 import DoughnutChart from "../components/DoughnutChart";
-import randomColor from 'randomcolor';
+import randomColor from "randomcolor";
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Doughnut");
-  const types = ["Bar", "PolarArea","Doughnut"];
+  const types = ["Bar", "PolarArea", "Doughnut"];
 
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("leadTime", (err, value: any) => {
       const labels = Object.keys(value);
       const color = randomColor({
-        count: select === "Bar"? 1 :Object.values(value).length,
-        format: 'rgba',
-        luminosity: 'dark',
+        count: select === "Bar" ? 1 : Object.values(value).length,
+        format: "rgba",
+        luminosity: "dark",
         alpha: 0.6,
-     });
+      });
       const data = {
         labels,
         datasets: [
