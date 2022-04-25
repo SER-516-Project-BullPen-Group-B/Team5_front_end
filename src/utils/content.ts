@@ -1,34 +1,34 @@
 import {
-  InboxIcon,
-  PencilAltIcon,
-  TrashIcon,
-  UsersIcon,
+  XIcon,
+  DocumentReportIcon,
+  BadgeCheckIcon,
+  RefreshIcon
 } from "@heroicons/react/outline";
 
 export const features = [
   {
-    name: "Metric 1",
+    name: "Niko Niko",
     description:
-      "lorum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    icon: InboxIcon,
+      "It provides the happiness factor of each task done by the user.",
+    icon: XIcon,
   },
   {
-    name: "Metric 2",
+    name: "Active Tasks",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    icon: UsersIcon,
+      "It is used to identify number of active tasks and number of tasks that are read to be tested per user",
+    icon: DocumentReportIcon,
   },
   {
-    name: "Metric 3",
+    name: "Scope Change",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    icon: TrashIcon,
+      "It tracks the user stories which are added before an and after planning for each sprint.",
+    icon: RefreshIcon,
   },
   {
-    name: "Metric 4",
+    name: "Accepte Work Spread",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    icon: PencilAltIcon,
+      "It helps to check if a user is following a Divide and Conquer approach or collaborating with the team.",
+    icon: BadgeCheckIcon,
   },
 ];
 
