@@ -2,6 +2,7 @@ import "../App.css";
 import Hero from "../components/HeroSection";
 import Features from "../components/FeatureSection";
 import Stats from "../components/Stats";
+import ThreeD from "../components/3D";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Hero />
           <Features />
           <Stats />
+          <ThreeD />
         </main>
       </div>
     </div>
