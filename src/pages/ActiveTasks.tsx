@@ -6,7 +6,6 @@ import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import randomColor from "randomcolor";
-import { number } from "prop-types";
 
 const colorPicker = (count: number, alpha: number) => {
   return randomColor({
@@ -15,6 +14,34 @@ const colorPicker = (count: number, alpha: number) => {
     luminosity: "dark",
     alpha: alpha,
   });
+};
+
+const options = {
+  indexAxis: "y" as const,
+  scales: {
+    y: {
+      title: {
+        display: true,
+        text: "Developers",
+      },
+    },
+    x: { title: { display: true, text: "Active Tasks" } },
+  },
+  elements: {
+    bar: {
+      borderWidth: 2,
+    },
+  },
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "right" as const,
+    },
+    title: {
+      display: true,
+      text: "Active tasks",
+    },
+  },
 };
 
 const ActiveTasks: React.FC = () => {
@@ -36,7 +63,7 @@ const ActiveTasks: React.FC = () => {
       /* eslint-disable  @typescript-eslint/no-explicit-any */
       if (typeof value != "string") {
         value.forEach((data) => {
-          for (let key in data) {
+          for (const key in data) {
             if (key === "Username") {
               category.push({ label: data[key] });
               labels.push(data[key]);
@@ -106,7 +133,7 @@ const ActiveTasks: React.FC = () => {
       </div>
       <div className="m-4">
         {chartBarData && select === "2D" ? (
-          <BarChart data={chartBarData} />
+          <BarChart options={JSON.stringify(options)} data={chartBarData} />
         ) : data && select === "3D" ? (
           <StackedChart data={data} />
         ) : typeof data === "string" ? (

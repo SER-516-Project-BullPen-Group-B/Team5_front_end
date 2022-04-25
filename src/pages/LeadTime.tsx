@@ -10,6 +10,18 @@ const LeadTime: React.FC = () => {
   const [select, setSelect] = useState("Doughnut");
   const types = ["Bar", "PolarArea", "Doughnut"];
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top" as const,
+      },
+      title: {
+        display: true,
+        text: "Per User Story",
+      },
+    },
+  };
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("leadTime", (err, value: any) => {
@@ -46,7 +58,7 @@ const LeadTime: React.FC = () => {
       <div className="m-4">
         {select === "Bar" ? (
           data ? (
-            <BarChart data={data} />
+            <BarChart options={JSON.stringify(options)} data={data} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
