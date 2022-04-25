@@ -12,6 +12,7 @@ export const options = {
     responsive: true,
     maintainAspectRatio: true,
     resizeDelay: 40,
+    animateScale:true,
     plugins: {
         legend: {
             position: 'top' as const,

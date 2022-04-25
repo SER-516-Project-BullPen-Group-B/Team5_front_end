@@ -26,11 +26,22 @@ export const options = {
     legend: {
       position: "top" as const,
     },
-    title: {
-      display: true,
-      text: "Per User Story",
-    },
   },
+  scales: {
+    x:{
+      title:{
+        display:true,
+        text: "User Stories"
+      }
+    },
+    y:{
+      title:{
+        beginAtZero:true,
+        display:true,
+        text: "Days"
+      }
+    },
+  }
 };
 
 interface BarChartProps {
