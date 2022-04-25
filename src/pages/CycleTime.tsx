@@ -8,7 +8,18 @@ const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
   const types = ["Bar", "Line"];
-
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top" as const,
+      },
+      title: {
+        display: true,
+        text: "Per User Story",
+      },
+    },
+  };
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
@@ -43,7 +54,7 @@ const CycleTime: React.FC = () => {
       <div className="m-4">
         {select === "Bar" ? (
           data ? (
-            <BarChart data={data} />
+            <BarChart options={JSON.stringify(options)} data={data} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
