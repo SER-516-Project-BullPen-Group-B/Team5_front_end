@@ -5,15 +5,11 @@ import Stats from "../components/Stats";
 
 function App() {
   return (
-    <div className="App">
-      <div className="bg-white">
-        <main>
-          <Hero />
-          <Features />
-          <Stats />
-        </main>
-      </div>
-    </div>
+    <>
+      <Hero />
+      <Features />
+      <Stats />
+    </>
   );
 }
 
