@@ -3,14 +3,13 @@ import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import LineChart from "../components/LineChart";
-import { FunnelChart } from 'react-funnel-pipeline'
-import 'react-funnel-pipeline/dist/index.css'
+import FunnelChart from "../components/FunnelChart";
 
 const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
   const types = ["Bar", "Line", "Funnel"];
-  const [funnelData, setFunnelData] = useState<{ name: string, value: number }[]>();
+  const [funnelData, setFunnelData] = useState<{ id: string, value: number, label:string }[]>();
   const options = {
     responsive: true,
     plugins: {
@@ -54,16 +53,18 @@ const CycleTime: React.FC = () => {
           },
         ],
       };
-      let FunnelData: { name: string, value: number }[] = [];
+      let FunnelData: {id:string, value: number, label: string }[] = [];
       if(select === "Funnel"){
         for(let i = 0;i<Object.values(value).length;i++){
-         /* eslint-disable  @typescript-eslint/no-explicit-any */
-          let item:any = {};
+          /* eslint-disable  @typescript-eslint/no-explicit-any */
+          let item:{id:string,value: any,label:string};
           item = {
-            "name" : Object.keys(value)[i],
+            "id": `step_${i}`,
             "value" : Object.values(value)[i],
+            "label" : Object.keys(value)[i],
+
           }
-          FunnelData = [item, ...FunnelData]
+          FunnelData = [...FunnelData,item]
         }
       }
       FunnelData.sort(function(a, b) { 
@@ -104,10 +105,8 @@ const CycleTime: React.FC = () => {
         ) : null}
         {select === "Funnel" ? (
           funnelData ? (
-            <div className="pt-10 mt-10">
               <FunnelChart 
               data={funnelData} />
-            </div>
           ) : (
             <div>
               Data not available, please make a valid request before you visit
