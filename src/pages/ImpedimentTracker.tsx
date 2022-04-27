@@ -1,6 +1,7 @@
 import DropDown from "../components/DropDown";
 import { useState, useEffect } from "react";
 import localforage from "localforage";
+import Impediment from "../components/Impediment";
 
 const ImpedimentTracker: React.FC = () => {
 
@@ -19,6 +20,7 @@ const ImpedimentTracker: React.FC = () => {
                 <div>
                     Data not available, please make a valid request before you visit
                     this page.
+                    <Impediment></Impediment>
                 </div>
             </div>
         </div>
