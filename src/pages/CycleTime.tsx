@@ -57,12 +57,10 @@ const CycleTime: React.FC = () => {
       if(select === "Funnel"){
         for(let i = 0;i<Object.values(value).length;i++){
           /* eslint-disable  @typescript-eslint/no-explicit-any */
-          let item:{id:string,value: any,label:string};
-          item = {
+          const item:{id:string,value: any,label:string} = {
             "id": `step_${i}`,
             "value" : Object.values(value)[i],
             "label" : Object.keys(value)[i],
-
           }
           FunnelData = [...FunnelData,item]
         }
@@ -108,7 +106,7 @@ const CycleTime: React.FC = () => {
         {select === "Funnel" ? (
           funnelData ? (
               <FunnelChart 
-              data={funnelData} />
+              data={funnelData} length={funnelData.length}/>
           ) : (
             <div>
               Data not available, please make a valid request before you visit

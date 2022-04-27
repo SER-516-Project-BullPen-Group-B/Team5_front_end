@@ -1,7 +1,14 @@
 import { ResponsiveFunnel } from '@nivo/funnel'
 
-const FunnelChart = ({ data }) => {
-    const length = data.length
+import PropTypes from "prop-types";
+
+interface FunnelChartProps {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    data: any;
+    length:number;
+}
+
+const FunnelChart: React.FC<FunnelChartProps> = ({ data, length }) => {
     return (
             <div style={{height: length*50.7833}} className="mt-10 pt-6">
                 <ResponsiveFunnel
@@ -30,5 +37,10 @@ const FunnelChart = ({ data }) => {
             </div>
     )
 }
+
+FunnelChart.propTypes = {
+    data: PropTypes.any.isRequired,
+    length:PropTypes.number.isRequired
+};
 
 export default FunnelChart;
