@@ -6,7 +6,6 @@ import Service from "./pages/TaigaService";
 import App from "./App";
 import LeadTime from "./pages/LeadTime";
 import Nav from "./components/Nav";
-import NoOfTasksPerDay from "./pages/NoOfTasksPerDay";
 import reportWebVitals from "./reportWebVitals";
 import CFD from "./pages/CFD";
 import Niko from "./pages/Niko-Niko";
@@ -23,10 +22,6 @@ ReactDOM.render(
         <Route path="taiga-service" element={<Nav render={<Service />} />} />
         <Route path="lead-time" element={<Nav render={<LeadTime />} />} />
         <Route path="cycle-time" element={<Nav render={<CycleTime />} />} />
-        <Route
-          path="tasks-per-day"
-          element={<Nav render={<NoOfTasksPerDay />} />}
-        />
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
         <Route path="active-tasks" element={<Nav render={<ActiveTasks />} />} />
         <Route path="work-in-progress" element={<Nav render={<WIP />} />} />

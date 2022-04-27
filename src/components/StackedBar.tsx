@@ -1,6 +1,7 @@
 import FusionCharts from "fusioncharts";
 import charts from "fusioncharts/fusioncharts.charts";
 import ReactFusioncharts from "react-fusioncharts";
+import PropTypes from "prop-types";
 
 // Resolves charts dependancy
 charts(FusionCharts);
@@ -19,6 +20,10 @@ const StackedChart: React.FC<StackedBarProps> = ({ data }) => {
       dataSource={JSON.parse(data)}
     />
   );
+};
+
+StackedChart.propTypes = {
+  data: PropTypes.string.isRequired,
 };
 
 export default StackedChart;

@@ -35,11 +35,8 @@ const TaigaService: React.FC = () => {
         const data =
           select === "WIP" || select === "CFD"
             ? axios.post(`${metric.endpoint}`, {
-                username: username,
-                password: password,
-                type: "normal",
-                team: url.split(" ")[1],
                 group: url.split(" ")[0],
+                team: url.split(" ")[1],
               })
             : axios.post(`${metric.endpoint + url}`, {
                 username: username,
@@ -50,6 +47,7 @@ const TaigaService: React.FC = () => {
           .then(async (res) => {
             if (res.status === 200) {
               localForage.setItem(metric.localForageKey, res.data);
+              console.log(res.data);
             }
           })
           .catch((_err) => {
