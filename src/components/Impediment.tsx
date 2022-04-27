@@ -1,30 +1,28 @@
 import { Chart } from "react-google-charts";
 import PropTypes from "prop-types";
 
-const columns = [
-    { type: "string", id: "Subject" },
-    { type: "date", id: "Start" },
-    { type: "date", id: "End" },
-];
-
-const rows = [
-    ["Washington", new Date(1789, 3, 30), new Date(1790, 2, 4)],
-    ["Adams", new Date(1789, 6, 4), new Date(1807, 2, 14)],
-    ["Jefferson", new Date(1789, 8, 4), new Date(1797, 1, 23)],
-];
-
-export const data = [columns, ...rows];
-
 interface ImpedimentProps {
-    data: string;
+    rows: string;
 }
 
-const Impediment: React.FC = () => {
-    return <Chart chartType="Timeline" data={data} width="100%" height="400px" />;
+const Impediment: React.FC<ImpedimentProps> = ({ rows }) => {
+    const data = 
+    [
+        [
+            { type: "string", id: "Subject" },
+            { type: "date", id: "Start" },
+            { type: "date", id: "End" },
+        ]
+    ];
+    const records = JSON.parse(rows);
+    for(var i=0; i < records.length; i++) {
+        data.push([records[i][0], new Date(records[i][1]), new Date(records[i][2])]);
+    }
+    return <Chart chartType="Timeline" data={data} width="100%" height="800px"/>;
 };
 
 Impediment.propTypes = {
-    data: PropTypes.string.isRequired
+    rows: PropTypes.string.isRequired
 }
 
 export default Impediment;

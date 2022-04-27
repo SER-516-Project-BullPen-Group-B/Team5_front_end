@@ -51,6 +51,14 @@ const data = {
     requestPending: "Generating Viz for WIP",
     localForageKey: "wip",
   },
+  impediment: {
+    name: "Impediment Tracker",
+    endpoint: "http://54.209.129.72/impedimentTester.php/?by_slug=",
+    requestSuccess: "Viz for Impediment Trakcer is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for Impediment Tracker",
+    localForageKey: "impediment"
+  }
 };
 
 export const map = {
@@ -60,4 +68,5 @@ export const map = {
   CFD: data.cfd,
   "Cycle Time": data.cycleTime,
   WIP: data.wip,
+  "Impediment Tracker": data.impediment
 };
