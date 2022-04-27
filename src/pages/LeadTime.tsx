@@ -22,43 +22,46 @@ const LeadTime: React.FC = () => {
       },
     },
     scales: {
-      x:{
-        title:{
-          display:true,
-          text: "User Stories"
-        }
+      x: {
+        title: {
+          display: true,
+          text: "User Stories",
+        },
       },
-      y:{
-        title:{
-          beginAtZero:true,
-          display:true,
-          text: "Days"
-        }
+      y: {
+        title: {
+          beginAtZero: true,
+          display: true,
+          text: "Days",
+        },
       },
-    }
+    },
   };
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("leadTime", (err, value: any) => {
-      const labels = Object.keys(value);
-      const color = randomColor({
-        count: select === "Bar" ? 1 : Object.values(value).length,
-        format: "rgba",
-        luminosity: "dark",
-        alpha: 0.6,
-      });
-      const data = {
-        labels,
-        datasets: [
-          {
-            label: "Lead Time",
-            data: Object.values(value),
-            backgroundColor: color,
-            borderWidth: 1,
-          },
-        ],
-      };
-      setData(JSON.stringify(data));
+      if (value !== null) {
+        console.log(value);
+        const labels = Object.keys(value);
+        const color = randomColor({
+          count: select === "Bar" ? 1 : Object.values(value).length,
+          format: "rgba",
+          luminosity: "dark",
+          alpha: 0.6,
+        });
+        const data = {
+          labels,
+          datasets: [
+            {
+              label: "Lead Time",
+              data: Object.values(value),
+              backgroundColor: color,
+              borderWidth: 1,
+            },
+          ],
+        };
+        setData(JSON.stringify(data));
+      }
     });
   }, [select]);
 
