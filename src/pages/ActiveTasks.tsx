@@ -45,7 +45,7 @@ const options = {
 };
 
 const ActiveTasks: React.FC = () => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState();
   const [chartBarData, setChartBarData] = useState("");
   const [select, setSelect] = useState("3D");
   const types = ["2D", "3D"];
@@ -60,66 +60,71 @@ const ActiveTasks: React.FC = () => {
     const readyToTestData: { value: any }[] = [];
     const chartReadyToTestData: string[] = [];
     localForage.getItem("activeTasks", (err, value: any) => {
-      /* eslint-disable  @typescript-eslint/no-explicit-any */
-      if (typeof value != "string") {
-        value.forEach((data) => {
-          for (const key in data) {
-            if (key === "Username") {
-              category.push({ label: data[key] });
-              labels.push(data[key]);
-            } else if (key === "No_of_Tasks_in_progress") {
-              inProgressData.push({ value: data[key] });
-              chartInProgressData.push(data[key]);
-            } else {
-              readyToTestData.push({ value: data[key] });
-              chartReadyToTestData.push(data[key]);
+      if (value !== null) {
+        /* eslint-disable  @typescript-eslint/no-explicit-any */
+        if (typeof value != "string") {
+          value.forEach((data) => {
+            for (const key in data) {
+              if (key === "Username") {
+                category.push({ label: data[key] });
+                labels.push(data[key]);
+              } else if (key === "No_of_Tasks_in_progress") {
+                inProgressData.push({ value: data[key] });
+                chartInProgressData.push(data[key]);
+              } else {
+                readyToTestData.push({ value: data[key] });
+                chartReadyToTestData.push(data[key]);
+              }
             }
-          }
-        });
-        dataset.push({ seriesname: "In progress", data: inProgressData });
-        dataset.push({ seriesname: "Ready to test", data: readyToTestData });
-        const data = {
-          chart: {
-            caption: "Chart for Active Tasks",
-            subcaption: "In Progress vs Ready to Test",
-            plottooltext: "$label has <b>$dataValue</b> tasks in $seriesName",
-            theme: "candy",
-          },
-          categories: [
-            {
-              category: category,
+          });
+          dataset.push({ seriesname: "In progress", data: inProgressData });
+          dataset.push({ seriesname: "Ready to test", data: readyToTestData });
+          const data = {
+            chart: {
+              caption: "Chart for Active Tasks",
+              subcaption: "In Progress vs Ready to Test",
+              plottooltext: "$label has <b>$dataValue</b> tasks in $seriesName",
+              theme: "candy",
             },
-          ],
-          dataset: [
-            {
-              seriesname: "In progress",
-              data: inProgressData,
-            },
-            {
-              seriesname: "Ready to test",
-              data: readyToTestData,
-            },
-          ],
-        };
-        const chartData = {
-          labels,
-          datasets: [
-            {
-              label: "In progress",
-              data: chartInProgressData,
-              backgroundColor: colorPicker(1, 0.3),
-              borderWidth: 1,
-            },
-            {
-              label: "Ready to test",
-              data: chartReadyToTestData,
-              backgroundColor: colorPicker(1, 0.7),
-              borderWidth: 1,
-            },
-          ],
-        };
-        setData(JSON.stringify(data));
-        setChartBarData(JSON.stringify(chartData));
+            categories: [
+              {
+                category: category,
+              },
+            ],
+            dataset: [
+              {
+                seriesname: "In progress",
+                data: inProgressData,
+              },
+              {
+                seriesname: "Ready to test",
+                data: readyToTestData,
+              },
+            ],
+          };
+          const chartData = {
+            labels,
+            datasets: [
+              {
+                label: "In progress",
+                data: chartInProgressData,
+                backgroundColor: colorPicker(1, 0.3),
+                borderWidth: 1,
+              },
+              {
+                label: "Ready to test",
+                data: chartReadyToTestData,
+                backgroundColor: colorPicker(1, 0.7),
+                borderWidth: 1,
+              },
+            ],
+          };
+          setData(JSON.stringify(data));
+          setChartBarData(JSON.stringify(chartData));
+        } else {
+          setData(value);
+          setChartBarData(value);
+        }
       }
     });
   }, [select]);
@@ -132,14 +137,19 @@ const ActiveTasks: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        {chartBarData && select === "2D" ? (
+        {chartBarData && select === "2D" && typeof data !== "string" ? (
           <BarChart options={JSON.stringify(options)} data={chartBarData} />
-        ) : data && select === "3D" ? (
+        ) : data && select === "3D" && typeof data !== "string" ? (
           <StackedChart data={data} />
         ) : typeof data === "string" ? (
-          <h3>No tasks for the given projects</h3>
+          <h3>{data}</h3>
         ) : (
-          <></>
+          <>
+            <h3>
+              Data not available, please make a valid request before you visit
+              this page.
+            </h3>
+          </>
         )}
       </div>
     </div>

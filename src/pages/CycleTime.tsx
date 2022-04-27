@@ -22,25 +22,25 @@ const CycleTime: React.FC = () => {
       },
     },
     scales: {
-      x:{
-        title:{
-          display:true,
-          text: "User Stories"
-        }
+      x: {
+        title: {
+          display: true,
+          text: "User Stories",
+        },
       },
-      y:{
-        title:{
-          beginAtZero:true,
-          display:true,
-          text: "Days"
-        }
+      y: {
+        title: {
+          beginAtZero: true,
+          display: true,
+          text: "Days",
+        },
       },
-    }
+    },
   };
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
-      console.log(value)
+      if(value!=null){
       const labels = Object.keys(value);
       const data = {
         labels,
@@ -66,12 +66,14 @@ const CycleTime: React.FC = () => {
           }
           FunnelData = [...FunnelData,item]
         }
-      }
-      FunnelData.sort(function(a, b) { 
-        return a.value - b.value;
-      });
-      FunnelData = FunnelData.reverse();
-      select==="Funnel"?setFunnelData(FunnelData):setData(JSON.stringify(data));
+        FunnelData.sort(function (a, b) {
+          return a.value - b.value;
+        });
+        FunnelData = FunnelData.reverse();
+        }
+      select === "Funnel"
+          ? setFunnelData(FunnelData):setData(JSON.stringify(data));
+    }
     });
   }, [select]);
   return (

@@ -7,20 +7,22 @@ const Table = () => {
   useEffect(() => {
     // eslint-disable-next-line
     localForage.getItem("nikoNiko", (err, data: any) => {
-      // eslint-disable-next-line
-      const tableData: any[] = [];
-      data.forEach((item) => {
+      if (data !== null) {
         // eslint-disable-next-line
-        const row: any[] = [];
-        // eslint-disable-next-line
-        for (const [key, value] of Object.entries(item)) {
-          if (typeof value === "string") {
-            row.push(value);
+        const tableData: any[] = [];
+        data.forEach((item) => {
+          // eslint-disable-next-line
+          const row: any[] = [];
+          // eslint-disable-next-line
+          for (const [key, value] of Object.entries(item)) {
+            if (typeof value === "string") {
+              row.push(value);
+            }
           }
-        }
-        tableData.push(row);
-      });
-      setData(tableData);
+          tableData.push(row);
+        });
+        setData(tableData);
+      }
     });
   }, []);
 

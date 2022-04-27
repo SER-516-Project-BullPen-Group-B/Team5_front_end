@@ -3,7 +3,7 @@ import { ResponsiveFunnel } from '@nivo/funnel'
 const FunnelChart = ({ data }) => {
     const length = data.length
     return (
-            <div style={{height: length*50.7833}}>
+            <div style={{height: length*50.7833}} className="mt-10 pt-6">
                 <ResponsiveFunnel
                     data={data}
                     margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
