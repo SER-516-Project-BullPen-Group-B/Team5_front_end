@@ -50,7 +50,6 @@ const TaigaService: React.FC = () => {
           .then(async (res) => {
             if (res.status === 200) {
               localForage.setItem(metric.localForageKey, res.data);
-              console.log(res.data);
             }
           })
           .catch((_err) => {
