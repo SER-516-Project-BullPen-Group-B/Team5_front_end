@@ -18,7 +18,7 @@ const Impediment: React.FC<ImpedimentProps> = ({ rows }) => {
     for(var i=0; i < records.length; i++) {
         data.push([records[i][0], new Date(records[i][1]), new Date(records[i][2])]);
     }
-    return <Chart chartType="Timeline" data={data} width="100%" height="800px"/>;
+    return <Chart chartType="Timeline" data={data} width="100%" height={records.length * 50}/>;
 };
 
 Impediment.propTypes = {

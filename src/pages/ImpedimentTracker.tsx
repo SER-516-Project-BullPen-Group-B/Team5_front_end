@@ -17,7 +17,28 @@ const ImpedimentTracker: React.FC = () => {
             const data = [
                 ["Washington", new Date(2022, 3, 30), new Date(2022, 12, 4)],
                 ["Adams", new Date(1789, 6, 4), new Date(1807, 2, 14)],
-                ["Jefferson", new Date(1789, 8, 4), new Date(1797, 1, 23)]
+                ["Jefferson", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson1", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson2", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson3", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson4", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson5", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson6", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson7", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson8", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson9", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson10", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson11", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson12", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Jefferson13", new Date(1789, 8, 4), new Date(1797, 1, 23)],
+                ["Adams1", new Date(1789, 6, 4), new Date(1807, 2, 14)],
+                ["Adams2", new Date(1789, 6, 4), new Date(1807, 2, 14)],
+                ["Adams3", new Date(1789, 6, 4), new Date(1807, 2, 14)],
+                ["Adams4", new Date(1789, 6, 4), new Date(1807, 2, 14)],
+                ["Adams5", new Date(1789, 6, 4), new Date(1807, 2, 14)],
+                ["Adams6", new Date(1789, 6, 4), new Date(1807, 2, 14)],
+                ["Adams7", new Date(1789, 6, 4), new Date(1807, 2, 14)],
+                ["Adams8", new Date(1789, 6, 4), new Date(1807, 2, 14)],
             ];
             setData(JSON.stringify(data));
         });
