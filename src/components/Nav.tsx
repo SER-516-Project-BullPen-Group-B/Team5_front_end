@@ -10,6 +10,7 @@ import {
   DocumentReportIcon,
   ClockIcon,
   BriefcaseIcon,
+  TrendingUpIcon,
 } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
@@ -31,6 +32,12 @@ const navigation = [
     name: "Cycle Time",
     href: "/cycle-time",
     icon: FolderIcon,
+    current: false,
+  },
+  {
+    name: "Throughput",
+    href: "/throughput",
+    icon: TrendingUpIcon,
     current: false,
   },
   {

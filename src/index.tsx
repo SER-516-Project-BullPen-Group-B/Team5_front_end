@@ -14,6 +14,7 @@ import CFD2 from "./pages/CFD2";
 import ActiveTasks from "./pages/ActiveTasks";
 import WIP from "./pages/WIP";
 import CycleTime from "./pages/CycleTime";
+import Throughput from "./pages/Throughput";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +28,7 @@ ReactDOM.render(
           path="tasks-per-day"
           element={<Nav render={<NoOfTasksPerDay />} />}
         />
+        <Route path = "throughput" element={<Nav render={<Throughput />}/>}/>
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
         <Route path="active-tasks" element={<Nav render={<ActiveTasks />} />} />
         <Route path="work-in-progress" element={<Nav render={<WIP />} />} />
