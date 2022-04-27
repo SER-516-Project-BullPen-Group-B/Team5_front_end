@@ -1,6 +1,6 @@
 import { ResponsiveRadialBar } from '@nivo/radial-bar'
 
-const MyResponsiveRadialBar = ({ data /* see data tab */ }) => {
+const RadialBarChart = ({ data }) => {
     return (
         <div style={{height: 700}}>
         <ResponsiveRadialBar
@@ -19,4 +19,4 @@ const MyResponsiveRadialBar = ({ data /* see data tab */ }) => {
     )
 }
 
-export default MyResponsiveRadialBar;
+export default RadialBarChart;

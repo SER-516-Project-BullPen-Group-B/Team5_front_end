@@ -1,6 +1,6 @@
 import DropDown from "../components/DropDown";
 import { useState } from "react";
-import MyResponsiveRadialBar from "../components/RadialBarChart";
+import RadialBarChart from "../components/RadialBarChart";
 
 const Throughput: React.FC = () => {
   const [select, setSelect] = useState("Radial Bar");
@@ -49,7 +49,7 @@ const Throughput: React.FC = () => {
         
         {select === "Radial Bar" ? (
           data ? (
-            <MyResponsiveRadialBar data={data} />
+            <RadialBarChart data={data} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit

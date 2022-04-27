@@ -1529,6 +1529,27 @@
     "@react-spring/web" "9.3.1"
     d3-shape "^1.3.5"
 
+"@nivo/axes@0.79.0":
+  version "0.79.0"
+  resolved "https://registry.yarnpkg.com/@nivo/axes/-/axes-0.79.0.tgz#6f009819b26f93a4126697152aeab5f979f1ab6c"
+  integrity sha512-EhSeCPxtWEuxqnifeyF/pIJEzL7pRM3rfygL+MpfT5ypu5NcXYRGQo/Bw0Vh+GF1ML+tNAE0rRvCu2jgLSdVNQ==
+  dependencies:
+    "@nivo/scales" "0.79.0"
+    "@react-spring/web" "9.3.1"
+    d3-format "^1.4.4"
+    d3-time-format "^3.0.0"
+
+"@nivo/bullet@^0.79.1":
+  version "0.79.1"
+  resolved "https://registry.yarnpkg.com/@nivo/bullet/-/bullet-0.79.1.tgz#5daca87cdad800dd5559189c004f4df604109a6f"
+  integrity sha512-qZQwNUoIYDVb+/z9Z4Z/0sshYnKAT705poO4GUOc8k5ULs1+j3AgDn5Q72KgF6WgBhRFYSFCK4Dw8c5YOomHEg==
+  dependencies:
+    "@nivo/axes" "0.79.0"
+    "@nivo/colors" "0.79.1"
+    "@nivo/legends" "0.79.1"
+    "@nivo/tooltip" "0.79.0"
+    "@react-spring/web" "9.3.1"
+
 "@nivo/colors@0.79.1":
   version "0.79.1"
   resolved "https://registry.yarnpkg.com/@nivo/colors/-/colors-0.79.1.tgz#0504c08b6a598bc5cb5a8b823d332a73fdc6ef43"
