@@ -2,7 +2,10 @@ import {
   XIcon,
   DocumentReportIcon,
   BadgeCheckIcon,
-  RefreshIcon
+  RefreshIcon,
+  ClockIcon,
+  FolderIcon,
+  TrendingUpIcon
 } from "@heroicons/react/outline";
 
 export const features = [
@@ -30,6 +33,24 @@ export const features = [
       "It helps to check if a user is following a Divide and Conquer approach or collaborating with the team.",
     icon: BadgeCheckIcon,
   },
+  {
+    name: "Lead Time",
+    description:
+      "It is a measure of how much time was taken to complete a user story from when the user story was created.",
+    icon: ClockIcon,
+  },
+  {
+    name: "Cycle Time",
+    description:
+      "It is a measure of how much time it took to be “done” with a user story from when it was started to be worked upon.",
+    icon: FolderIcon,
+  },
+  {
+    name: "Throughput",
+    description:
+      "It is a measure of the amount of work done per unit time.",
+    icon: TrendingUpIcon,
+  }
 ];
 
 export const metrics = [
