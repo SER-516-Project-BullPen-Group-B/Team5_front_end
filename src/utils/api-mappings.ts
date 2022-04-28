@@ -1,8 +1,7 @@
 const data = {
   leadTime: {
     name: "Lead Time",
-    endpoint:
-      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/lead-time?slug=",
+    endpoint: "http://lead-time:8004",
     requestSuccess: "Viz for Lead Time is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Lead Time",
@@ -10,8 +9,7 @@ const data = {
   },
   activeTasks: {
     name: "Active Tasks",
-    endpoint:
-      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/active-tasks?slug=",
+    endpoint: "http://active-tasks:8001",
     requestSuccess: "Viz for Active Tasks is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Active Tasks",
@@ -19,8 +17,7 @@ const data = {
   },
   cycleTime: {
     name: "Cycle Time",
-    endpoint:
-      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/cycle-time?slug=",
+    endpoint: "http://cycle-time:8003",
     requestSuccess: "Viz for Cycle Time is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Cycle Time",
@@ -28,8 +25,7 @@ const data = {
   },
   nikoNiko: {
     name: "Niko Niko",
-    endpoint:
-      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/niko-niko?slug=",
+    endpoint: "http://niko-niko:8002",
     requestSuccess: "Viz for Niko Niko is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Niko Niko",
@@ -37,7 +33,7 @@ const data = {
   },
   cfd: {
     name: "CFD",
-    endpoint: "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/cfd",
+    endpoint: "http://cfd:8006",
     requestSuccess: "Viz for CFD is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for CFD",
@@ -45,7 +41,7 @@ const data = {
   },
   wip: {
     name: "WIP",
-    endpoint: "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/cfd",
+    endpoint: "http://wip:8005",
     requestSuccess: "Viz for WIP is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for WIP",
