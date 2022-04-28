@@ -4,12 +4,16 @@ import localForage from "localforage";
 import { useEffect, useState } from "react";
 import LineChart from "../components/LineChart";
 import FunnelChart from "../components/FunnelChart";
+import PolarChart from "../components/PolarChart";
+import DoughnutChart from "../components/DoughnutChart";
+import randomColor from "randomcolor";
 
 const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "Line", "Funnel"];
+  const types = ["Bar", "Line", "PolarArea", "Doughnut","Funnel"];
   const [funnelData, setFunnelData] = useState<{ id: string, value: number, label:string }[]>();
+
   const options = {
     responsive: true,
     plugins: {
@@ -42,13 +46,19 @@ const CycleTime: React.FC = () => {
     localForage.getItem("cycleTime", (err, value: any) => {
       if(value!=null){
       const labels = Object.keys(value);
+      const color = randomColor({
+        count: select === "Bar" ? 1 : Object.values(value).length,
+        format: "rgba",
+        luminosity: "dark",
+        alpha: 0.6,
+      });
       const data = {
         labels,
         datasets: [
           {
             label: "Cycle Time",
             data: Object.values(value),
-            backgroundColor: ["rgba(75, 0, 130, 0.7)"],
+            backgroundColor: color,
             borderWidth: 3,
           },
         ],
@@ -77,7 +87,7 @@ const CycleTime: React.FC = () => {
   return (
     <div>
       <div className="flex justify-end ...">
-        <div className="m-6 pb-10">
+        <div className="m-6">
           {" "}
           <DropDown values={types} select={setSelect} title={select} />
         </div>
@@ -103,6 +113,26 @@ const CycleTime: React.FC = () => {
             </div>
           )
         ) : null}
+        {select === "PolarArea" ? (
+          data ? (
+            <PolarChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Doughnut" ? (
+          data ? (
+            <DoughnutChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
         {select === "Funnel" ? (
           funnelData ? (
               <FunnelChart 
@@ -120,3 +150,5 @@ const CycleTime: React.FC = () => {
 };
 
 export default CycleTime;
+
+

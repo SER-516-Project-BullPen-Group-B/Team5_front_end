@@ -10,7 +10,7 @@ interface FunnelChartProps {
 
 const FunnelChart: React.FC<FunnelChartProps> = ({ data, length }) => {
     return (
-            <div style={{height: length*50.7833}} className="mt-10 pt-6">
+            <div style={{height: length*50.7833}} >
                 <ResponsiveFunnel
                     data={data}
                     margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
