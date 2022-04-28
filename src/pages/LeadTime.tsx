@@ -5,10 +5,13 @@ import { useEffect, useState } from "react";
 import PolarChart from "../components/PolarChart";
 import DoughnutChart from "../components/DoughnutChart";
 import randomColor from "randomcolor";
+import LineChart from "../components/LineChart";
+import FunnelChart from "../components/FunnelChart";
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
-  const [select, setSelect] = useState("Doughnut");
-  const types = ["Bar", "PolarArea", "Doughnut"];
+  const [select, setSelect] = useState("Bar");
+  const types = ["Bar", "Line", "PolarArea", "Doughnut", "Funnel"];
+  const [funnelData, setFunnelData] = useState<{ id: string, value: number, label:string }[]>();
 
   const options = {
     responsive: true,
@@ -60,8 +63,24 @@ const LeadTime: React.FC = () => {
             },
           ],
         };
-        setData(JSON.stringify(data));
-      }
+        let FunnelData: {id:string, value: number, label: string }[] = [];
+        if(select === "Funnel"){
+          for(let i = 0;i<Object.values(value).length;i++){
+            /* eslint-disable  @typescript-eslint/no-explicit-any */
+            const item:{id:string,value: any,label:string} = {
+              "id": `step_${i}`,
+              "value" : Object.values(value)[i],
+              "label" : Object.keys(value)[i],
+            }
+            FunnelData = [...FunnelData,item]
+          }
+          FunnelData.sort(function (a, b) {
+            return a.value - b.value;
+          });
+          FunnelData = FunnelData.reverse();
+          }
+        select === "Funnel"
+            ? setFunnelData(FunnelData):setData(JSON.stringify(data));      }
     });
   }, [select]);
 
@@ -97,6 +116,27 @@ const LeadTime: React.FC = () => {
         {select === "Doughnut" ? (
           data ? (
             <DoughnutChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Line" ? (
+          data ? (
+            <LineChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Funnel" ? (
+          funnelData ? (
+              <FunnelChart 
+              data={funnelData} length={funnelData.length}/>
           ) : (
             <div>
               Data not available, please make a valid request before you visit
