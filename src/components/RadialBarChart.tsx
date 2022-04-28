@@ -1,8 +1,16 @@
 import { ResponsiveRadialBar } from '@nivo/radial-bar'
 
-const RadialBarChart = ({ data }) => {
+import PropTypes from "prop-types";
+
+interface RadialBarChartProps {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    data: any;
+    length: number;
+  }
+
+const RadialBarChart:React.FC<RadialBarChartProps> = ({ data,length }) => {
     return (
-        <div style={{height: 700}}>
+        <div style={{height: 140*length}}>
         <ResponsiveRadialBar
             data={data}
             valueFormat=">-.2f"
@@ -17,6 +25,11 @@ const RadialBarChart = ({ data }) => {
         />
         </div>
     )
+}
+
+RadialBarChart.propTypes = {
+    data: PropTypes.any.isRequired,
+    length: PropTypes.number.isRequired,
 }
 
 export default RadialBarChart;
