@@ -57,6 +57,12 @@ const navigation = [
     icon: BriefcaseIcon,
     current: false,
   },
+  {
+    name: "Scope Change",
+    href: "/cummulative-flow-diagram",
+    icon: CollectionIcon,
+    current: false,
+  },
 ];
 
 function classNames(...classes) {

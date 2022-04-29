@@ -13,6 +13,7 @@ import CFD2 from "./pages/CFD2";
 import ActiveTasks from "./pages/ActiveTasks";
 import WIP from "./pages/WIP";
 import CycleTime from "./pages/CycleTime";
+import Scopechangeradar from "./components/scopechangeradar";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="active-tasks" element={<Nav render={<ActiveTasks />} />} />
         <Route path="work-in-progress" element={<Nav render={<WIP />} />} />
         <Route path="cfd" element={<Nav render={<CFD2 />} />} />
+        <Route path="scope change" element={<Nav render={<Scopechangeradar />} />} />
         <Route
           path="cummulative-flow-diagram"
           element={<Nav render={<CFD />} />}
