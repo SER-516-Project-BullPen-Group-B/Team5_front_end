@@ -5,7 +5,10 @@ import {
   RefreshIcon,
   ClockIcon,
   FolderIcon,
-  TrendingUpIcon
+  TrendingUpIcon,
+  PresentationChartLineIcon,
+  ChartSquareBarIcon,
+  ChartBarIcon
 } from "@heroicons/react/outline";
 
 export const features = [
@@ -50,6 +53,21 @@ export const features = [
     description:
       "It is a measure of the amount of work done per unit time.",
     icon: TrendingUpIcon,
+  },
+  {
+    name: "Cumulative Flow Diagram (CFD)",
+    description: "CFD gives us a quick overview of what is happening in the project. It shows the no. of tasks in New, In Progress, Ready for Test, Done and Blocked states at any given date.",
+    icon: PresentationChartLineIcon
+  },
+  {
+    name: "Work in Progress (WIP)",
+    description: "WIP gives us a quick overview of no. of tasks that are in the In Progress state at any date.",
+    icon: ChartSquareBarIcon
+  },
+  {
+    name: "Impediment Tracker",
+    description: "Impediment tracker gives us the real time data of the impediments in project and the duration of these impediments in a timeline graph.",
+    icon: ChartBarIcon
   }
 ];
 
