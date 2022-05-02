@@ -32,7 +32,7 @@ const Throughput: React.FC = () => {
       let radialData:RadialDataInterface[] = []
       for(let i=0;i<Object.keys(value).length;i++){
         if(select === "Bullet"){
-          let item = {
+          const item = {
             "id": Object.keys(value)[i],
             "ranges": [0,40,70,100],
             "measures": [Object.values(value)[i] as number],
@@ -41,7 +41,7 @@ const Throughput: React.FC = () => {
           bulletData = [...bulletData, item]
         }
         else if(select === "RadialBar"){
-          let item = {
+          const item = {
             "id": `${i}`,
             "data": [{
               "x": Object.keys(value)[i],
