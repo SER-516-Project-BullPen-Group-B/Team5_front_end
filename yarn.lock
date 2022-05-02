@@ -1576,6 +1576,7 @@
     d3-time-format "^3.0.0"
     lodash "^4.17.21"
 
+<<<<<<< HEAD
 "@nivo/legends@0.79.1":
   version "0.79.1"
   resolved "https://registry.yarnpkg.com/@nivo/legends/-/legends-0.79.1.tgz#60b1806bba547f796e6e5b66943d65153de60c79"
@@ -1600,6 +1601,15 @@
     "@nivo/legends" "0.79.1"
     "@nivo/polar-axes" "0.79.1"
     "@nivo/scales" "0.79.0"
+=======
+"@nivo/funnel@^0.79.1":
+  version "0.79.1"
+  resolved "https://registry.yarnpkg.com/@nivo/funnel/-/funnel-0.79.1.tgz#b875945e2696f34d8b4969fcfc9efff495557944"
+  integrity sha512-nn0YqDT/U2ORDAbcQoyBH+I5MvkIouSk5imWLB6SsEbvZnzSokvxccDpJJsok1E4JqbjG/dNKeZckE14YNTHwQ==
+  dependencies:
+    "@nivo/annotations" "0.79.1"
+    "@nivo/colors" "0.79.1"
+>>>>>>> main
     "@nivo/tooltip" "0.79.0"
     "@react-spring/web" "9.3.1"
     d3-scale "^3.2.3"
@@ -1612,6 +1622,7 @@
   dependencies:
     react-lifecycles-compat "^3.0.4"
 
+<<<<<<< HEAD
 "@nivo/scales@0.79.0":
   version "0.79.0"
   resolved "https://registry.yarnpkg.com/@nivo/scales/-/scales-0.79.0.tgz#553b6910288080fbfbbe4d2aab1dd80e2d172e6e"
@@ -1622,6 +1633,8 @@
     d3-time-format "^3.0.0"
     lodash "^4.17.21"
 
+=======
+>>>>>>> main
 "@nivo/tooltip@0.79.0":
   version "0.79.0"
   resolved "https://registry.yarnpkg.com/@nivo/tooltip/-/tooltip-0.79.0.tgz#3d46be8734e5d30e5387515db0c83bd1c795f442"
@@ -1907,6 +1920,14 @@
     dom-accessibility-api "^0.5.6"
     lodash "^4.17.15"
     redent "^3.0.0"
+
+"@testing-library/react-hooks@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-8.0.0.tgz#7d0164bffce4647f506039de0a97f6fcbd20f4bf"
+  integrity sha512-uZqcgtcUUtw7Z9N32W13qQhVAD+Xki2hxbTR461MKax8T6Jr8nsUvZB+vcBTkzY2nFvsUet434CsgF0ncW2yFw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    react-error-boundary "^3.1.0"
 
 "@testing-library/react@12.1.4":
   version "12.1.4"
@@ -8091,6 +8112,13 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-error-boundary@^3.1.0:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/react-error-boundary/-/react-error-boundary-3.1.4.tgz#255db92b23197108757a888b01e5b729919abde0"
+  integrity sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 react-error-overlay@^6.0.10:
   version "6.0.10"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.10.tgz#0fe26db4fa85d9dbb8624729580e90e7159a59a6"
@@ -8109,11 +8137,6 @@ react-force-graph-3d@^1.21.12:
     "3d-force-graph" "^1.70"
     prop-types "^15.8"
     react-kapsule "^2.2"
-
-react-funnel-pipeline@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-funnel-pipeline/-/react-funnel-pipeline-0.1.2.tgz#16ab317a37320b24db36b650b7b2b5678ade803c"
-  integrity sha512-v0wCIPSfhSPwFT+BzOw/y/PzK/COaxUj+L4YwvbU1t0Dd9Yy5CHiw+TR7D1eNjv6W7x1Z7ATld/FPpKC0+6HkQ==
 
 react-fusioncharts@^3.1.2:
   version "3.1.2"

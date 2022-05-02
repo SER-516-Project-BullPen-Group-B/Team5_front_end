@@ -23,14 +23,6 @@ export const options = {
       text: "Per User Story",
     },
   },
-  animations: {
-    tension: {
-      duration: 1000,
-      from: 1,
-      to: 0,
-      loop: true,
-    },
-  },
   scales: {
     x:{
       title:{

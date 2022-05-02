@@ -4,13 +4,13 @@ import {
     Tooltip,
     Legend,
     PointElement,
-    LineElement, 
+    RadarController, 
     Filler
 } from "chart.js";
-import { Line } from "react-chartjs-2";
+import { Radar } from "react-chartjs-2";
 import PropTypes from "prop-types";
 
-ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement, Filler);
+ChartJS.register(Title, Tooltip, Legend, PointElement, RadarController, Filler);
 
 const options = {
     responsive: true,
@@ -27,11 +27,6 @@ const options = {
         line: {
             tension: 0.4
         }
-    },
-    scales: {
-        y: {
-            stacked: true
-        }
     }
 };
 
@@ -40,7 +35,7 @@ interface CFDProps {
 }
 
 const CFD: React.FC<CFDProps> = ({ data }) => {
-    return <Line options={options} data={JSON.parse(data)} />;
+    return <Radar options={options} data={JSON.parse(data)} />;
 };
 
 CFD.propTypes = {

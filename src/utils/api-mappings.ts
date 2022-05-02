@@ -37,7 +37,7 @@ const data = {
   },
   cfd: {
     name: "CFD",
-    endpoint: "https://cfd-srvce.herokuapp.com/csv",
+    endpoint: "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/cfd",
     requestSuccess: "Viz for CFD is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for CFD",
@@ -45,7 +45,7 @@ const data = {
   },
   wip: {
     name: "WIP",
-    endpoint: "https://cfd-srvce.herokuapp.com/csv",
+    endpoint: "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/cfd",
     requestSuccess: "Viz for WIP is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for WIP",

@@ -11,24 +11,26 @@ const WIP: React.FC = () => {
   useEffect(() => {
     /* eslint-disable @typescript-eslint/no-explicit-any */
     localforage.getItem("wip", (err, value: any) => {
-      const labels = Object.keys(value);
-      const inProgress: number[] = [];
-      Object.values(value).forEach((val: any) => {
-        inProgress.push(val["In Progress"]);
-      });
-      const data = {
-        labels: labels,
-        datasets: [
-          {
-            label: "Work in Progress",
-            data: inProgress,
-            fill: true,
-            backgroundColor: "rgba(255, 187, 51, 0.15)",
-            borderColor: "rgba(255, 187, 51, 0.9)",
-          },
-        ],
-      };
-      setData(JSON.stringify(data));
+      if (value !== null) {
+        const labels = Object.keys(value);
+        const inProgress: number[] = [];
+        Object.values(value).forEach((val: any) => {
+          inProgress.push(val["In Progress"]);
+        });
+        const data = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Work in Progress",
+              data: inProgress,
+              fill: true,
+              backgroundColor: "rgba(255, 187, 51, 0.15)",
+              borderColor: "rgba(255, 187, 51, 0.9)",
+            },
+          ],
+        };
+        setData(JSON.stringify(data));
+      }
     });
   }, []);
 
