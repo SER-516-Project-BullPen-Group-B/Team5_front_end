@@ -2,6 +2,7 @@ import localforage from "localforage";
 import DropDown from "../components/DropDown";
 import { useState, useEffect } from "react";
 import CFDComp from "../components/CFD";
+import Radial from "../components/CFDRadial";
 
 const CFD: React.FC = () => {
   const [data, setData] = useState("");
@@ -88,10 +89,14 @@ const CFD: React.FC = () => {
           )
         ) : null}
         {select === "Radar" ? (
-          <div>
-            Data not available, please make a valid request before you visit
-            this page.
-        </div>
+          data ? (
+            <Radial data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
         ) : null}
       </div>
     </div>
