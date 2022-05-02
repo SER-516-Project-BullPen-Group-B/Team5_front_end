@@ -21,6 +21,7 @@ const TaigaService: React.FC = () => {
     "CFD",
     "WIP",
     "Active Tasks",
+    "Throughput"
   ];
   const handleSubmit = (e) => {
     e.preventDefault();
