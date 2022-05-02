@@ -1,12 +1,13 @@
 import localforage from "localforage";
 import WIPComp from "../components/WIPChart";
+import WIPBarChart from "../components/WIPBarChart";
 import DropDown from "../components/DropDown";
 import { useState, useEffect } from "react";
 
 const WIP: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Line");
-  const types = ["Line"];
+  const types = ["Line", "Bar"];
 
   useEffect(() => {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -24,7 +25,7 @@ const WIP: React.FC = () => {
               label: "Work in Progress",
               data: inProgress,
               fill: true,
-              backgroundColor: "rgba(255, 187, 51, 0.15)",
+              backgroundColor: "rgba(255, 187, 51, 0.4)",
               borderColor: "rgba(255, 187, 51, 0.9)",
             },
           ],
@@ -43,14 +44,26 @@ const WIP: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        {data ? (
-          <WIPComp data={data} />
-        ) : (
-          <div>
-            Data not available, please make a valid request before you visit
-            this page.
-          </div>
-        )}
+        {select === "Line" ? (
+          data ? (
+            <WIPComp data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Bar" ? (
+          data ? (
+            <WIPBarChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
       </div>
     </div>
   );
