@@ -27,6 +27,11 @@ const options = {
         line: {
             tension: 0.4
         }
+    },
+    scales: {
+        y: {
+            stacked: true
+        }
     }
 };
 
