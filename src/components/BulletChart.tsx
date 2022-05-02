@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 interface BulletChartProps {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     data: any;
-    length: number;
 }
 
-const BulletChart:React.FC<BulletChartProps> = ({ data,length }) => {
+const BulletChart:React.FC<BulletChartProps> = ({ data }) => {
+    data = JSON.parse(data);
    return (
-        <div style={{height: 100*length}}>
+        <div style={{height: 100*data.length}}>
             <ResponsiveBullet
                 data={data}
                 margin={{ top: 50, right: 90, bottom: 50, left: 90 }}
@@ -27,7 +27,6 @@ const BulletChart:React.FC<BulletChartProps> = ({ data,length }) => {
 
 BulletChart.propTypes = {
     data:PropTypes.any.isRequired,
-    length:PropTypes.number.isRequired,
 }
 
 export default BulletChart;

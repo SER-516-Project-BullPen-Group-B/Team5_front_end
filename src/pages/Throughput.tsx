@@ -1,41 +1,63 @@
 import DropDown from "../components/DropDown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RadialBarChart from "../components/RadialBarChart";
 import BulletChart from "../components/BulletChart";
+import localforage from "localforage";
+import '../styles/Metrics.css';
+
+interface BulletDataInterface {
+  id: string,
+  ranges: number[],
+  measures: number[],
+  markers: number[]
+}
+
+interface RadialDataInterface {
+  id: string,
+  data: {
+    x: string,
+    y: number
+  }[]
+}
 
 const Throughput: React.FC = () => {
+  const [data, setData] = useState("");
   const [select, setSelect] = useState("Bullet");
   const types = ["Bullet","RadialBar"];
-  const data= {
-    "Sprint 1": 9,
-    "Sprint 2": 22,
-    "Sprint 3": 57,
-    "Sprint 4": 89,
-    "Sprint 5": 100
-  } 
-  let bulletData:{id:string,ranges:number[],measures:number[],markers:number[]}[]= []
-  let radialData:{id:string,data:{x:string,y:number}[]}[] = []
-  for(let i=0;i<Object.keys(data).length;i++){
-    if(select === "Bullet"){
-      let item = {
-        "id": Object.keys(data)[i],
-        "ranges": [0,40,70,100],
-        "measures": [Object.values(data)[i]],
-        "markers":[Object.values(data)[i]]
+  
+  useEffect(() => {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    localforage.getItem("throughput", (err, value: any) => {
+      let bulletData:BulletDataInterface[]= []
+      let radialData:RadialDataInterface[] = []
+      for(let i=0;i<Object.keys(value).length;i++){
+        if(select === "Bullet"){
+          let item = {
+            "id": Object.keys(value)[i],
+            "ranges": [0,40,70,100],
+            "measures": [Object.values(value)[i] as number],
+            "markers":[Object.values(value)[i] as number]
+          }
+          bulletData = [...bulletData, item]
+        }
+        else if(select === "RadialBar"){
+          let item = {
+            "id": `${i}`,
+            "data": [{
+              "x": Object.keys(value)[i],
+              "y": Object.values(value)[i] as number
+            }],
+          }
+          radialData = [...radialData, item]
+        }
       }
-      bulletData = [...bulletData, item]
-    }
-    else if(select === "RadialBar"){
-      let item = {
-        "id": `${i}`,
-        "data": [{
-          "x": Object.keys(data)[i],
-          "y": Object.values(data)[i]
-        }],
+      if (select === "Bullet") {
+        setData(JSON.stringify(bulletData));
+      } else {
+        setData(JSON.stringify(radialData));
       }
-      radialData = [...radialData, item]
-    }
-  }
+    });
+  }, [select]);
   
   return (
     <div>
@@ -46,9 +68,10 @@ const Throughput: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
+        
         {select === "RadialBar" ? (
-          radialData ? (
-            <RadialBarChart data={radialData} length={radialData.length}/>
+          data ? (
+            <RadialBarChart data={data}/>
           ) : (
             <div>
               Data not available, please make a valid request before you visit
@@ -57,8 +80,8 @@ const Throughput: React.FC = () => {
           )
         ) : null}
         {select === "Bullet" ? (
-          bulletData ? (
-            <BulletChart data={bulletData} length={bulletData.length}/>
+          data ? (
+            <BulletChart data={data}/>
           ) : (
             <div>
               Data not available, please make a valid request before you visit
