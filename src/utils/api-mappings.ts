@@ -51,6 +51,14 @@ const data = {
     requestPending: "Generating Viz for WIP",
     localForageKey: "wip",
   },
+  throughput: {
+    name: "Throughput",
+    endpoint: "https://mpattan.pythonanywhere.com/throughput?slug=",
+    requestSuccess: "Viz for Throughput is ready!",
+    requestFail: "An unexpected error occurec while processing the request",
+    requestPending: "Generting Viz for Throughput",
+    localForageKey: "throughput"
+  }
 };
 
 export const map = {
@@ -60,4 +68,5 @@ export const map = {
   CFD: data.cfd,
   "Cycle Time": data.cycleTime,
   WIP: data.wip,
+  Throughput: data.throughput
 };
