@@ -21,7 +21,8 @@ interface RadialDataInterface {
 }
 
 const Throughput: React.FC = () => {
-  const [data, setData] = useState("");
+  const [bulletData, setBulletData] = useState("");
+  const [radialData, setRadialData] = useState("");
   const [select, setSelect] = useState("Bullet");
   const types = ["Bullet","RadialBar"];
   
@@ -52,9 +53,9 @@ const Throughput: React.FC = () => {
         }
       }
       if (select === "Bullet") {
-        setData(JSON.stringify(bulletData));
-      } else {
-        setData(JSON.stringify(radialData));
+        setBulletData(JSON.stringify(bulletData));
+      } else if (select === "RadialBar") {
+        setRadialData(JSON.stringify(radialData));
       }
     });
   }, [select]);
@@ -70,8 +71,8 @@ const Throughput: React.FC = () => {
       <div className="m-4">
         
         {select === "RadialBar" ? (
-          data ? (
-            <RadialBarChart data={data}/>
+          radialData ? (
+            <RadialBarChart data={radialData}/>
           ) : (
             <div>
               Data not available, please make a valid request before you visit
@@ -80,8 +81,8 @@ const Throughput: React.FC = () => {
           )
         ) : null}
         {select === "Bullet" ? (
-          data ? (
-            <BulletChart data={data}/>
+          bulletData ? (
+            <BulletChart data={bulletData}/>
           ) : (
             <div>
               Data not available, please make a valid request before you visit
