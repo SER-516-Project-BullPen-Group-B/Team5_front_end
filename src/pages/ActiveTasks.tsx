@@ -122,8 +122,7 @@ const ActiveTasks: React.FC = () => {
           setData(JSON.stringify(data));
           setChartBarData(JSON.stringify(chartData));
         } else {
-          setData(value);
-          setChartBarData(value);
+          setData("No active tasks");
         }
       }
     });
@@ -137,12 +136,18 @@ const ActiveTasks: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        {chartBarData && select === "2D" && typeof data !== "string" ? (
+        {chartBarData &&
+        select === "2D" &&
+        typeof data == "string" &&
+        data !== "No active tasks" ? (
           <BarChart options={JSON.stringify(options)} data={chartBarData} />
-        ) : data && select === "3D" && typeof data !== "string" ? (
+        ) : data &&
+          select === "3D" &&
+          typeof data == "string" &&
+          data !== "No active tasks" ? (
           <StackedChart data={data} />
-        ) : typeof data === "string" ? (
-          <h3>{data}</h3>
+        ) : data === "No active tasks" ? (
+          <h2 className="text-3xl">{data}</h2>
         ) : (
           <>
             <h3>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,8 +8,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -24,26 +24,26 @@ ChartJS.register(
 export const options = {
   responsive: true,
   interaction: {
-    mode: 'index' as const,
-    intersect: false,
+    mode: "index" as const,
+    intersect: true,
   },
   stacked: false,
   plugins: {
     title: {
       display: true,
-      text: 'Chart.js Line Chart - Multi Axis',
+      text: "Chart.js Line Chart - Multi Axis",
     },
   },
   scales: {
     y: {
-      type: 'linear' as const,
+      type: "linear" as const,
       display: true,
-      position: 'left' as const,
+      position: "left" as const,
     },
     y1: {
-      type: 'linear' as const,
+      type: "linear" as const,
       display: true,
-      position: 'right' as const,
+      position: "right" as const,
       grid: {
         drawOnChartArea: false,
       },
@@ -51,22 +51,28 @@ export const options = {
   },
 };
 
-const labels = ['Achyuth reddy Rajula', 'Aditya desai', 'Mohammadh Patthan', 'Gautham krishna', 'Srikar Vodeti', 'Shandilya'];
+const labels = [
+  "Achyuth reddy Rajula",
+  "Aditya desai",
+  "Mohammadh Patthan",
+  "Gautham krishna",
+  "Srikar Vodeti",
+  "Shandilya",
+];
 
 export const data = {
   labels,
   datasets: [
     {
-      label: 'Tasks in progress',
-      data:[5,3,1,1,3,0],
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      yAxisID: 'y',
+      label: "Tasks in progress",
+      data: [5, 3, 1, 1, 3, 0],
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      yAxisID: "y",
     },
-
   ],
 };
 
-export  default function Lineactive() {
+export default function Lineactive() {
   return <Line options={options} data={data} />;
 }
