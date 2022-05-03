@@ -1,4 +1,3 @@
-import Calender from "../components/calender";
 import { useState } from "react";
 import localForage from "localforage";
 import { ToastContainer, toast, Flip } from "react-toastify";
@@ -6,14 +5,15 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import DropDown from "../components/DropDown";
 import { map } from "../utils/api-mappings";
+import { useNavigate } from "react-router-dom";
 
 const TaigaService: React.FC = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
+  const navigate = useNavigate();
   const metrics = [
     "Lead Time",
     "Cycle Time",
@@ -21,15 +21,28 @@ const TaigaService: React.FC = () => {
     "CFD",
     "WIP",
     "Active Tasks",
-    "Throughput"
+    "Throughput",
   ];
+  const nav = (route: string) => {
+    navigate(route);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (select !== "Metrics") {
       const metric = map[select];
-      for (const item of Object.keys(map)) {
-        localForage.removeItem(map[item].localForageKey);
-      }
+
+      localForage.getItem("input", (err, value) => {
+        console.log(value);
+        if (value !== null && value !== url) {
+          for (const item of Object.keys(map)) {
+            localForage.removeItem(map[item].localForageKey);
+            localForage.setItem("input", url);
+          }
+        } else {
+          localForage.setItem("input", url);
+        }
+      });
+
       // const formattedDate = new Date(Date.parse(date.toString()));
 
       try {
@@ -49,6 +62,7 @@ const TaigaService: React.FC = () => {
             if (res.status === 200) {
               localForage.setItem(metric.localForageKey, res.data);
               console.log(res.data);
+              nav(metric.route);
             }
           })
           .catch((_err) => {
@@ -181,9 +195,6 @@ const TaigaService: React.FC = () => {
                       select={setSelect}
                       title={select}
                     />
-                  </div>
-                  <div className="content-center">
-                    <Calender date={setDate} />
                   </div>
                   <div>
                     <button
