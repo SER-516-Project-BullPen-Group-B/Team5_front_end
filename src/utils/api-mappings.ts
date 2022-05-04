@@ -46,7 +46,7 @@ const data = {
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for CFD",
     localForageKey: "cfd",
-    route: "/cumulative-flow-diagram",
+    route: "/cummulative-flow-diagram",
   },
   wip: {
     name: "WIP",

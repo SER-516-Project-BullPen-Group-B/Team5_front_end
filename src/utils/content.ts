@@ -24,7 +24,7 @@ export const features = [
   {
     name: "Active Tasks",
     description:
-      "It is used to identify number of active tasks and number of tasks that are read to be tested per user",
+      "It is used to identify number of active tasks and number of tasks that are read to be tested per user.",
     icon: DocumentReportIcon,
   },
   {
