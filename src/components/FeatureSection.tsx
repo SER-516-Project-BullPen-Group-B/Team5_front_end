@@ -5,7 +5,7 @@ export default function Features() {
     <div className="lg:m-4 my-4 bg-gradient-to-r from-cyan-700 to-indigo-700">
       <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
         <h2 className="text-3xl font-extrabold text-white tracking-tight">
-          Metrics that help analyze your team's performance
+          Metrics that help analyze your team&apos;s performance
         </h2>
         <p className="mt-4 text-lg text-purple-200 center-align max-w-70">
           Our metrics provide an insight into productivity through the different stages of a software development lifecycle. This helps to assess the quality of a product and track team performance.
