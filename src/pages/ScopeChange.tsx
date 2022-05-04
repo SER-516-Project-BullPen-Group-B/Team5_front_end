@@ -1,6 +1,7 @@
 import localForage from "localforage";
 import { useState, useEffect } from "react";
 import Histogram from "../components/Histogram";
+import Gauge from "../components/Gauge";
 
 const ScopeChange = () => {
   const [data, setData] = useState("");
@@ -24,7 +25,10 @@ const ScopeChange = () => {
   return (
     <div>
       {data ? (
-        <Histogram data={data} />
+        <>
+          <Histogram data={data} />
+          <Gauge />
+        </>
       ) : (
         <div>
           Data not available, please make a valid request before you visit this
