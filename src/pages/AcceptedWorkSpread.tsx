@@ -1,6 +1,7 @@
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import PieChart from "../components/PieChart";
+import WorkTable from "../components/WorkTable";
 import randomColor from "randomcolor";
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
@@ -46,7 +47,10 @@ const LeadTime: React.FC = () => {
       <div className="flex justify-end ..."></div>
       <div className="m-4">
         {data ? (
-          <PieChart data={data} />
+          <>
+            <PieChart data={data} />
+            <WorkTable />
+          </>
         ) : (
           <div>
             Data not available, please make a valid request before you visit
