@@ -23,6 +23,7 @@ const TaigaService: React.FC = () => {
     "Active Tasks",
     "Throughput",
     "Accepted Work Spread",
+    "Impediment Tracker",
   ];
   const nav = (route: string) => {
     navigate(route);
@@ -48,10 +49,14 @@ const TaigaService: React.FC = () => {
 
       try {
         const data =
-          select === "WIP" || select === "CFD"
+          select === "CFD" ||
+          select === "WIP"
             ? axios.post(`${metric.endpoint}`, {
-                group: url.split(" ")[0],
+                username: username,
+                password: password,
+                type: "normal",
                 team: url.split(" ")[1],
+                group: url.split(" ")[0],
               })
             : axios.post(`${metric.endpoint + url}`, {
                 username: username,

@@ -12,6 +12,7 @@ import Niko from "./pages/Niko-Niko";
 import ActiveTasks from "./pages/ActiveTasks";
 import WIP from "./pages/WIP";
 import CycleTime from "./pages/CycleTime";
+import ImpedimentTracker from "./pages/ImpedimentTracker";
 import Throughput from "./pages/Throughput";
 import AcceptedWorkSpread from "./pages/AcceptedWorkSpread";
 
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route path="niko-niko" element={<Nav render={<Niko />} />} />
         <Route path="active-tasks" element={<Nav render={<ActiveTasks />} />} />
         <Route path="work-in-progress" element={<Nav render={<WIP />} />} />
+        <Route path="impediment-tracker" element={<Nav render={<ImpedimentTracker />} /> } />
         <Route
           path="accepted-work-spread"
           element={<Nav render={<AcceptedWorkSpread />} />}

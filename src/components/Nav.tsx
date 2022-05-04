@@ -10,6 +10,7 @@ import {
   DocumentReportIcon,
   ClockIcon,
   BriefcaseIcon,
+  BanIcon,
   TrendingUpIcon,
   BadgeCheckIcon,
 } from "@heroicons/react/outline";
@@ -63,6 +64,12 @@ const navigation = [
     name: "Work in Progress",
     href: "/work-in-progress",
     icon: BriefcaseIcon,
+    current: false,
+  },
+  {
+    name: "Impediment Tracker",
+    href: "/impediment-tracker",
+    icon: BanIcon,
     current: false,
   },
   {
