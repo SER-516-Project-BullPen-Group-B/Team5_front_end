@@ -1,27 +1,50 @@
-import Calender from "../components/calender";
 import { useState } from "react";
 import localForage from "localforage";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import DropDown from "../components/DropDown";
-import { map } from "../components/api-mappings";
+import { map } from "../utils/api-mappings";
+import { useNavigate } from "react-router-dom";
 
 const TaigaService: React.FC = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  const [date, setDate] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
   const [select, setSelect] = useState("Metrics");
-  const metrics = ["Lead Time", "Cycle Time", "Niko Niko", "CFD", "WIP", "Impediment Tracker"];
+  const navigate = useNavigate();
+  const metrics = [
+    "Lead Time",
+    "Cycle Time",
+    "Niko Niko",
+    "CFD",
+    "WIP",
+    "Active Tasks",
+    "Throughput",
+    "Accepted Work Spread",
+    "Impediment Tracker",
+  ];
+  const nav = (route: string) => {
+    navigate(route);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (select !== "Metrics") {
       const metric = map[select];
-      for (const item of Object.keys(map)) {
-        localForage.removeItem(map[item].localForageKey);
-      }
+
+      localForage.getItem("input", (err, value) => {
+        console.log(value);
+        if (value !== null && value !== url) {
+          for (const item of Object.keys(map)) {
+            localForage.removeItem(map[item].localForageKey);
+            localForage.setItem("input", url);
+          }
+        } else {
+          localForage.setItem("input", url);
+        }
+      });
+
       // const formattedDate = new Date(Date.parse(date.toString()));
 
       try {
@@ -44,19 +67,35 @@ const TaigaService: React.FC = () => {
           .then(async (res) => {
             if (res.status === 200) {
               localForage.setItem(metric.localForageKey, res.data);
+              console.log(res.data);
+              nav(metric.route);
             }
           })
-          .catch((_err) => {
-            toast.error("Try again with valid credentials or slug!", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            });
+          .catch((_error) => {
+            console.log(_error.response.status);
+            if (_error.response.status === 422) {
+              toast.info("Bad project data!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+            } else {
+              toast.error("Try again with valid credentials or slug!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+            }
           });
         toast.promise(data, {
           pending: metric.requestPending,
@@ -92,11 +131,11 @@ const TaigaService: React.FC = () => {
             <div>
               <img
                 className="h-12 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                src="https://tailwindui.com/img/logos/workflow-mark-cyan-600.svg"
                 alt="Workflow"
               />
               <h2 className="mt-6 text-2xl font-extrabold text-gray-900">
-                Welcome! Visualize your project's metrics here
+                Welcome! Visualize your project&rsquo;s metrics here
               </h2>
             </div>
 
@@ -120,7 +159,7 @@ const TaigaService: React.FC = () => {
                           onChange={(e) => setUsername(e.target.value)}
                           autoComplete="email"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -141,7 +180,7 @@ const TaigaService: React.FC = () => {
                           onChange={(e) => setPassword(e.target.value)}
                           autoComplete="current-password"
                           required
-                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -166,7 +205,7 @@ const TaigaService: React.FC = () => {
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -177,13 +216,10 @@ const TaigaService: React.FC = () => {
                       title={select}
                     />
                   </div>
-                  <div className="content-center">
-                    <Calender date={setDate} />
-                  </div>
                   <div>
                     <button
                       type="submit"
-                      className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
                     >
                       Fetch
                     </button>

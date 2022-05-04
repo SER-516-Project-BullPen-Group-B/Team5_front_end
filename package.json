@@ -6,9 +6,11 @@
     "@craco/craco": "^6.4.3",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
+    "@mui/material": "^5.6.4",
+    "@nivo/bullet": "^0.79.1",
+    "@nivo/core": "^0.79.0",
+    "@nivo/funnel": "^0.79.1",
+    "@nivo/radial-bar": "^0.79.1",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.43",
@@ -19,17 +21,20 @@
     "localforage": "^1.10.0",
     "material-ui-icons": "^1.0.0-beta.36",
     "prop-types": "^15.8.1",
+    "randomcolor": "^0.6.2",
     "react": "^17.0.2",
     "react-calendar": "^3.7.0",
     "react-chartjs-2": "^4.1.0",
     "react-data-table-component": "^7.4.7",
     "react-dom": "^17.0.2",
+    "react-force-graph-3d": "^1.21.12",
     "react-fusioncharts": "^3.1.2",
     "react-google-charts": "^4.0.0",
     "react-router-dom": "6",
     "react-scripts": "5.0.0",
     "react-toastify": "^8.2.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "three-spritetext": "^1.6.5",
     "typescript": "^4.6.3",
     "v-localforage": "^2.0.1",
     "victory": "^36.3.2",
@@ -38,7 +43,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test",
+    "test": "craco test --coverage --collectCoverageFrom=src/**/*.{ts,tsx} --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -60,7 +65,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "12.1.4",
+    "@testing-library/react-hooks": "^8.0.0",
+    "@testing-library/user-event": "^14.1.1",
     "autoprefixer": "^9",
+    "global-jsdom": "^8.4.0",
     "postcss": "^7"
   }
 }

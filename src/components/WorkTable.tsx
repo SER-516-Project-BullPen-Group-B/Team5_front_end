@@ -2,37 +2,25 @@ import { useState, useEffect } from "react";
 import localForage from "localforage";
 
 const Table = () => {
-  // eslint-disable-next-line
-  const [data, setData] = useState<any | null>();
+  const [data, setData] = useState([]);
   useEffect(() => {
-    // eslint-disable-next-line
-    localForage.getItem("nikoNiko", (err, data: any) => {
-      if (data !== null) {
-        // eslint-disable-next-line
-        const tableData: any[] = [];
-        data.forEach((item) => {
-          // eslint-disable-next-line
-          const row: any[] = [];
-          // eslint-disable-next-line
-          for (const [key, value] of Object.entries(item)) {
-            if (typeof value === "string") {
-              row.push(value);
-            }
-          }
-          tableData.push(row);
-        });
-        setData(tableData);
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    localForage.getItem("acceptedWorkSpread", (err, value: any) => {
+      if (value !== null) {
+        setData(value);
       }
     });
   }, []);
-
+  console.log(data);
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">Niko Niko</h1>
+          <h1 className="text-xl font-semibold text-gray-900">
+            Accepted Work spread
+          </h1>
           <p className="mt-2 text-sm text-gray-700">
-            A table representing developer satisfaction for a given task
+            A table to show the accepted work spread.
           </p>
         </div>
       </div>
@@ -47,47 +35,51 @@ const Table = () => {
                       scope="col"
                       className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                     >
-                      Name
+                      Full Name
                     </th>
                     <th
                       scope="col"
                       className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Task Name
+                      Stratergy
                     </th>
                     <th
                       scope="col"
                       className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Happiness Value
+                      User stories worked with
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {data ? (
                     data.map((user: string[], i: number) => {
+                      console.log(user);
                       return (
                         <tr key={i} className="divide-x divide-gray-200">
                           <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
-                            {user[0]}
+                            {user["name"]}
                           </td>
                           <td className="whitespace-nowrap p-4 text-sm text-gray-500">
-                            {user[1]}
-                          </td>
-                          <td className="whitespace-nowrap p-4 text-sm text-gray-500">
-                            {user[2] === "happy :-)" || user[2] === "Happy" ? (
-                              "😄"
-                            ) : user[2] === "sad :-( " || user[2] === "Sad" ? (
-                              "😞"
-                            ) : user[2] === "confused :-/" ? (
-                              "😐"
-                            ) : user[2] === "mad  >:-{}" ||
-                              user[2] === "Mad" ? (
-                              "😡"
+                            {user["process_followed"] === "both" ? (
+                              "Mixed"
+                            ) : user["process_followed"] ===
+                              "not_divide_and_conquer" ? (
+                              "Collaborated"
+                            ) : user["process_followed"] ===
+                              "divide_and_conquer" ? (
+                              "Divided and Conqured"
                             ) : (
                               <></>
                             )}
                           </td>
+                          <div className="whitespace-nowrap p-4 text-sm text-gray-500">
+                            {user["user_stories"].map(
+                              (userStory: string, index: number) => {
+                                return <li key={index}>{userStory}</li>;
+                              }
+                            )}
+                          </div>
                         </tr>
                       );
                     })

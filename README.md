@@ -2,8 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2fe9cb17-9e19-4c77-bf67-ec8cd7c51c35/deploy-status)](https://app.netlify.com/sites/taiga-viz/deploys)
 
-![Code Quality Score](https://api.codiga.io/project/32673/score/svg)
-![Code Grade](https://api.codiga.io/project/32673/status/svg)
+![Code Quality Score](https://api.codiga.io/project/33081/score/svg)
+![Code Grade](https://api.codiga.io/project/33081/status/svg)
 
 ### `docker build -t <image-name>:<tag> .`
 

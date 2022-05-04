@@ -3,39 +3,87 @@ import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import PolarChart from "../components/PolarChart";
-
+import DoughnutChart from "../components/DoughnutChart";
+import randomColor from "randomcolor";
+import LineChart from "../components/LineChart";
+import FunnelChart from "../components/FunnelChart";
 const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "PolarArea"];
+  const types = ["Bar", "Line", "PolarArea", "Doughnut", "Funnel"];
+  const [funnelData, setFunnelData] =
+    useState<{ id: string; value: number; label: string }[]>();
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top" as const,
+      },
+      title: {
+        display: true,
+        text: "Lead Time Visualization",
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "User Stories",
+        },
+      },
+      y: {
+        title: {
+          beginAtZero: true,
+          display: true,
+          text: "Days",
+        },
+      },
+    },
+  };
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("leadTime", (err, value: any) => {
-      const labels = Object.keys(value);
-      const color =
-        select === "PolarArea"
-          ? [
-              "rgba(255, 99, 132, 0.5)",
-              "rgba(54, 162, 235, 0.5)",
-              "rgba(255, 206, 86, 0.5)",
-              "rgba(75, 192, 192, 0.5)",
-              "rgba(153, 102, 255, 0.5)",
-              "rgba(255, 159, 64, 0.5)",
-            ]
-          : ["rgba(07, 90, 128, 0.6)"];
-      const data = {
-        labels,
-        datasets: [
-          {
-            label: "Lead Time",
-            data: Object.values(value),
-            backgroundColor: color,
-            borderWidth: 1,
-          },
-        ],
-      };
-      setData(JSON.stringify(data));
+      if (value !== null) {
+        console.log(value);
+        const labels = Object.keys(value);
+        const color = randomColor({
+          count: select === "Bar" ? 1 : Object.values(value).length,
+          format: "rgba",
+          luminosity: "dark",
+          alpha: 0.6,
+        });
+        const data = {
+          labels,
+          datasets: [
+            {
+              label: "Lead Time",
+              data: Object.values(value),
+              backgroundColor: color,
+              borderWidth: 1,
+            },
+          ],
+        };
+        let FunnelData: { id: string; value: number; label: string }[] = [];
+        if (select === "Funnel") {
+          for (let i = 0; i < Object.values(value).length; i++) {
+            /* eslint-disable  @typescript-eslint/no-explicit-any */
+            const item: { id: string; value: any; label: string } = {
+              id: `step_${i}`,
+              value: Object.values(value)[i],
+              label: Object.keys(value)[i],
+            };
+            FunnelData = [...FunnelData, item];
+          }
+          FunnelData.sort(function (a, b) {
+            return a.value - b.value;
+          });
+          FunnelData = FunnelData.reverse();
+        }
+        select === "Funnel"
+          ? setFunnelData(FunnelData)
+          : setData(JSON.stringify(data));
+      }
     });
   }, [select]);
 
@@ -50,7 +98,7 @@ const LeadTime: React.FC = () => {
       <div className="m-4">
         {select === "Bar" ? (
           data ? (
-            <BarChart data={data} />
+            <BarChart options={JSON.stringify(options)} data={data} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
@@ -61,6 +109,36 @@ const LeadTime: React.FC = () => {
         {select === "PolarArea" ? (
           data ? (
             <PolarChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Doughnut" ? (
+          data ? (
+            <DoughnutChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Line" ? (
+          data ? (
+            <LineChart data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Funnel" ? (
+          funnelData ? (
+            <FunnelChart data={funnelData} length={funnelData.length} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
