@@ -6,6 +6,7 @@ import axios from "axios";
 import DropDown from "../components/DropDown";
 import { map } from "../utils/api-mappings";
 import { useNavigate } from "react-router-dom";
+import { stat } from "fs";
 
 const TaigaService: React.FC = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -22,6 +23,7 @@ const TaigaService: React.FC = () => {
     "WIP",
     "Active Tasks",
     "Throughput",
+    "Accepted Work Spread",
   ];
   const nav = (route: string) => {
     navigate(route);
@@ -65,17 +67,31 @@ const TaigaService: React.FC = () => {
               nav(metric.route);
             }
           })
-          .catch((_err) => {
-            toast.error("Try again with valid credentials or slug!", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            });
+          .catch((_error) => {
+            console.log(_error.response.status);
+            if (_error.response.status === 422) {
+              toast.info("Bad project data!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+            } else {
+              toast.error("Try again with valid credentials or slug!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+            }
           });
         toast.promise(data, {
           pending: metric.requestPending,
