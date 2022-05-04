@@ -6,7 +6,6 @@ import axios from "axios";
 import DropDown from "../components/DropDown";
 import { map } from "../utils/api-mappings";
 import { useNavigate } from "react-router-dom";
-import { stat } from "fs";
 
 const TaigaService: React.FC = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
