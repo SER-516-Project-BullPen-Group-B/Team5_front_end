@@ -11,8 +11,9 @@ import randomColor from "randomcolor";
 const CycleTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
-  const types = ["Bar", "Line", "PolarArea", "Doughnut","Funnel"];
-  const [funnelData, setFunnelData] = useState<{ id: string, value: number, label:string }[]>();
+  const types = ["Bar", "Line", "PolarArea", "Doughnut", "Funnel"];
+  const [funnelData, setFunnelData] =
+    useState<{ id: string; value: number; label: string }[]>();
 
   const options = {
     responsive: true,
@@ -22,7 +23,7 @@ const CycleTime: React.FC = () => {
       },
       title: {
         display: true,
-        text: "Per User Story",
+        text: "Cycle Time Visualization",
       },
     },
     scales: {
@@ -44,44 +45,45 @@ const CycleTime: React.FC = () => {
   useEffect(() => {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     localForage.getItem("cycleTime", (err, value: any) => {
-      if(value!=null){
-      const labels = Object.keys(value);
-      const color = randomColor({
-        count: select === "Bar" ? 1 : Object.values(value).length,
-        format: "rgba",
-        luminosity: "dark",
-        alpha: 0.6,
-      });
-      const data = {
-        labels,
-        datasets: [
-          {
-            label: "Cycle Time",
-            data: Object.values(value),
-            backgroundColor: color,
-            borderWidth: 3,
-          },
-        ],
-      };
-      let FunnelData: {id:string, value: number, label: string }[] = [];
-      if(select === "Funnel"){
-        for(let i = 0;i<Object.values(value).length;i++){
-          /* eslint-disable  @typescript-eslint/no-explicit-any */
-          const item:{id:string,value: any,label:string} = {
-            "id": `step_${i}`,
-            "value" : Object.values(value)[i],
-            "label" : Object.keys(value)[i],
-          }
-          FunnelData = [...FunnelData,item]
-        }
-        FunnelData.sort(function (a, b) {
-          return a.value - b.value;
+      if (value != null) {
+        const labels = Object.keys(value);
+        const color = randomColor({
+          count: select === "Bar" ? 1 : Object.values(value).length,
+          format: "rgba",
+          luminosity: "dark",
+          alpha: 0.6,
         });
-        FunnelData = FunnelData.reverse();
+        const data = {
+          labels,
+          datasets: [
+            {
+              label: "Cycle Time",
+              data: Object.values(value),
+              backgroundColor: color,
+              borderWidth: 3,
+            },
+          ],
+        };
+        let FunnelData: { id: string; value: number; label: string }[] = [];
+        if (select === "Funnel") {
+          for (let i = 0; i < Object.values(value).length; i++) {
+            /* eslint-disable  @typescript-eslint/no-explicit-any */
+            const item: { id: string; value: any; label: string } = {
+              id: `step_${i}`,
+              value: Object.values(value)[i],
+              label: Object.keys(value)[i],
+            };
+            FunnelData = [...FunnelData, item];
+          }
+          FunnelData.sort(function (a, b) {
+            return a.value - b.value;
+          });
+          FunnelData = FunnelData.reverse();
         }
-      select === "Funnel"
-          ? setFunnelData(FunnelData):setData(JSON.stringify(data));
-    }
+        select === "Funnel"
+          ? setFunnelData(FunnelData)
+          : setData(JSON.stringify(data));
+      }
     });
   }, [select]);
   return (
@@ -135,8 +137,7 @@ const CycleTime: React.FC = () => {
         ) : null}
         {select === "Funnel" ? (
           funnelData ? (
-              <FunnelChart 
-              data={funnelData} length={funnelData.length}/>
+            <FunnelChart data={funnelData} length={funnelData.length} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit
@@ -150,5 +151,3 @@ const CycleTime: React.FC = () => {
 };
 
 export default CycleTime;
-
-

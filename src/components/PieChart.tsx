@@ -1,7 +1,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import PropTypes from "prop-types";
 
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -16,22 +16,22 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Per User Story",
+      text: "Accepted Work Spread",
     },
   },
 };
 
-interface DoughnutChartProps {
+interface PieChartProps {
   data: string;
 }
 
-const DoughnutChart: React.FC<DoughnutChartProps> = ({ data }) => {
+const PieChart: React.FC<PieChartProps> = ({ data }) => {
   console.log(data);
-  return <Doughnut options={options} data={JSON.parse(data)} />;
+  return <Pie options={options} data={JSON.parse(data)} />;
 };
 
-DoughnutChart.propTypes = {
+PieChart.propTypes = {
   data: PropTypes.string.isRequired,
 };
 
-export default DoughnutChart;
+export default PieChart;

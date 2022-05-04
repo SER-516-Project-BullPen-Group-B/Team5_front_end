@@ -2,11 +2,12 @@ import localforage from "localforage";
 import DropDown from "../components/DropDown";
 import { useState, useEffect } from "react";
 import CFDComp from "../components/CFD";
+import Radial from "../components/CFDRadial";
 
 const CFD: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Line");
-  const types = ["Line"];
+  const types = ["Line", "Radar"];
 
   useEffect(() => {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -79,14 +80,26 @@ const CFD: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        {data ? (
-          <CFDComp data={data} />
-        ) : (
-          <div>
-            Data not available, please make a valid request before you visit
-            this page.
-          </div>
-        )}
+        {select === "Line" ? (
+          data ? (
+            <CFDComp data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
+        {select === "Radar" ? (
+          data ? (
+            <Radial data={data} />
+          ) : (
+            <div>
+              Data not available, please make a valid request before you visit
+              this page.
+            </div>
+          )
+        ) : null}
       </div>
     </div>
   );

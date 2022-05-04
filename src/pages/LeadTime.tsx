@@ -11,7 +11,8 @@ const LeadTime: React.FC = () => {
   const [data, setData] = useState("");
   const [select, setSelect] = useState("Bar");
   const types = ["Bar", "Line", "PolarArea", "Doughnut", "Funnel"];
-  const [funnelData, setFunnelData] = useState<{ id: string, value: number, label:string }[]>();
+  const [funnelData, setFunnelData] =
+    useState<{ id: string; value: number; label: string }[]>();
 
   const options = {
     responsive: true,
@@ -21,7 +22,7 @@ const LeadTime: React.FC = () => {
       },
       title: {
         display: true,
-        text: "Per User Story",
+        text: "Lead Time Visualization",
       },
     },
     scales: {
@@ -63,24 +64,26 @@ const LeadTime: React.FC = () => {
             },
           ],
         };
-        let FunnelData: {id:string, value: number, label: string }[] = [];
-        if(select === "Funnel"){
-          for(let i = 0;i<Object.values(value).length;i++){
+        let FunnelData: { id: string; value: number; label: string }[] = [];
+        if (select === "Funnel") {
+          for (let i = 0; i < Object.values(value).length; i++) {
             /* eslint-disable  @typescript-eslint/no-explicit-any */
-            const item:{id:string,value: any,label:string} = {
-              "id": `step_${i}`,
-              "value" : Object.values(value)[i],
-              "label" : Object.keys(value)[i],
-            }
-            FunnelData = [...FunnelData,item]
+            const item: { id: string; value: any; label: string } = {
+              id: `step_${i}`,
+              value: Object.values(value)[i],
+              label: Object.keys(value)[i],
+            };
+            FunnelData = [...FunnelData, item];
           }
           FunnelData.sort(function (a, b) {
             return a.value - b.value;
           });
           FunnelData = FunnelData.reverse();
-          }
+        }
         select === "Funnel"
-            ? setFunnelData(FunnelData):setData(JSON.stringify(data));      }
+          ? setFunnelData(FunnelData)
+          : setData(JSON.stringify(data));
+      }
     });
   }, [select]);
 
@@ -135,8 +138,7 @@ const LeadTime: React.FC = () => {
         ) : null}
         {select === "Funnel" ? (
           funnelData ? (
-              <FunnelChart 
-              data={funnelData} length={funnelData.length}/>
+            <FunnelChart data={funnelData} length={funnelData.length} />
           ) : (
             <div>
               Data not available, please make a valid request before you visit

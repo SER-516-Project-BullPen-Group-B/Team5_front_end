@@ -7,6 +7,7 @@ const data = {
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Lead Time",
     localForageKey: "leadTime",
+    route: "/lead-time",
   },
   activeTasks: {
     name: "Active Tasks",
@@ -16,6 +17,7 @@ const data = {
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Active Tasks",
     localForageKey: "activeTasks",
+    route: "/active-tasks",
   },
   cycleTime: {
     name: "Cycle Time",
@@ -25,6 +27,7 @@ const data = {
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Cycle Time",
     localForageKey: "cycleTime",
+    route: "/cycle-time",
   },
   nikoNiko: {
     name: "Niko Niko",
@@ -34,6 +37,7 @@ const data = {
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Niko Niko",
     localForageKey: "nikoNiko",
+    route: "/niko-niko",
   },
   cfd: {
     name: "CFD",
@@ -42,6 +46,7 @@ const data = {
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for CFD",
     localForageKey: "cfd",
+    route: "/cumulative-flow-diagram",
   },
   wip: {
     name: "WIP",
@@ -50,6 +55,26 @@ const data = {
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for WIP",
     localForageKey: "wip",
+    route: "/work-in-progress",
+  },
+  throughput: {
+    name: "Throughput",
+    endpoint: "https://mpattan.pythonanywhere.com/throughput?slug=",
+    requestSuccess: "Viz for Throughput is ready!",
+    requestFail: "An unexpected error occurec while processing the request",
+    requestPending: "Generting Viz for Throughput",
+    localForageKey: "throughput",
+    route: "/throughput",
+  },
+  acceptedWorkSpread: {
+    name: "Accepted Work Spread",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/accepted-workspread?slug=",
+    requestSuccess: "Viz for Accepted Work Spread is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for Accepted Work Spread",
+    localForageKey: "acceptedWorkSpread",
+    route: "/accepted-work-spread",
   },
 };
 
@@ -60,4 +85,6 @@ export const map = {
   CFD: data.cfd,
   "Cycle Time": data.cycleTime,
   WIP: data.wip,
+  Throughput: data.throughput,
+  "Accepted Work Spread": data.acceptedWorkSpread,
 };
