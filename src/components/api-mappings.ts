@@ -53,7 +53,7 @@ const data = {
   },
   impediment: {
     name: "Impediment Tracker",
-    endpoint: "http://54.209.129.72/impedimentTester.php/?by_slug=",
+    endpoint: "https://sheltered-mountain-32733.herokuapp.com/?by_slug=",
     requestSuccess: "Viz for Impediment Trakcer is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Impediment Tracker",
