@@ -66,6 +66,16 @@ const data = {
     localForageKey: "throughput",
     route: "/throughput",
   },
+  acceptedWorkSpread: {
+    name: "Accepted Work Spread",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/accepted-workspread?slug=",
+    requestSuccess: "Viz for Accepted Work Spread is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for Accepted Work Spread",
+    localForageKey: "acceptedWorkSpread",
+    route: "/accepted-work-spread",
+  },
 };
 
 export const map = {
@@ -76,4 +86,5 @@ export const map = {
   "Cycle Time": data.cycleTime,
   WIP: data.wip,
   Throughput: data.throughput,
+  "Accepted Work Spread": data.acceptedWorkSpread,
 };
