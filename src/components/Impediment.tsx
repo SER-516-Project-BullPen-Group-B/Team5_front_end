@@ -17,7 +17,7 @@ const Impediment: React.FC<ImpedimentProps> = ({ rows }) => {
     const records = JSON.parse(rows);
     const height = records.length < 6 ? 180 : records.length * 30;
     console.log(records.length)
-    for(var i=0; i < records.length; i++) {
+    for(let i=0; i < records.length; i++) {
         data.push([records[i][0], new Date(records[i][1]), new Date(records[i][2])]);
     }
     return <Chart chartType="Timeline" data={data} width="100%" height={height}/>;
