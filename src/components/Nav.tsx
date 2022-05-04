@@ -11,6 +11,7 @@ import {
   ClockIcon,
   BriefcaseIcon,
   TrendingUpIcon,
+  BadgeCheckIcon,
 } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
@@ -63,6 +64,11 @@ const navigation = [
     href: "/work-in-progress",
     icon: BriefcaseIcon,
     current: false,
+  },
+  {
+    name: "Accepted Work Spread",
+    href: "/accepted-work-spread",
+    icon: BadgeCheckIcon,
   },
 ];
 
