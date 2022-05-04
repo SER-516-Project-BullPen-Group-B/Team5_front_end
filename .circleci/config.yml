@@ -1,0 +1,21 @@
+jobs:
+  deploy:
+    docker:
+      - image: cimg/base:2021.07
+    steps:
+      - setup_remote_docker:
+          version: 19.03.13
+      - checkout
+      - heroku/check-authentication
+      - heroku/install
+      - heroku/push-docker-image:
+          process-types: web
+      - heroku/release-docker-image:
+          process-types: web
+orbs:
+  heroku: circleci/heroku@1.2.6
+version: 2.1
+workflows:
+  heroku_deploy:
+    jobs:
+      - deploy
