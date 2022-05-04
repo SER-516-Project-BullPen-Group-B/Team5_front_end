@@ -6,9 +6,12 @@ import {
   ClockIcon,
   FolderIcon,
   TrendingUpIcon,
-  PresentationChartLineIcon,
-  ChartSquareBarIcon,
-  ChartBarIcon
+  CollectionIcon,
+  BriefcaseIcon,
+  EmojiHappyIcon,
+  BanIcon,
+  PresentationChartBarIcon,
+  BellIcon
 } from "@heroicons/react/outline";
 
 export const features = [
@@ -57,39 +60,39 @@ export const features = [
   {
     name: "Cumulative Flow Diagram (CFD)",
     description: "CFD gives us a quick overview of what is happening in the project. It shows the no. of tasks in New, In Progress, Ready for Test, Done and Blocked states at any given date.",
-    icon: PresentationChartLineIcon
+    icon: CollectionIcon
   },
   {
     name: "Work in Progress (WIP)",
     description: "WIP gives us a quick overview of no. of tasks that are in the In Progress state at any date.",
-    icon: ChartSquareBarIcon
+    icon: BriefcaseIcon
   },
   {
     name: "Impediment Tracker",
     description: "Impediment tracker gives us the real time data of the impediments in project and the duration of these impediments in a timeline graph.",
-    icon: ChartBarIcon
+    icon: BanIcon
   }
 ];
 
 export const metrics = [
   {
     id: 1,
-    stat: "stat #1",
-    emphasis: "Lorem ipsum",
+    icon: TrendingUpIcon,
+    emphasis: "Throughput",
   },
   {
     id: 2,
-    stat: "stat #2",
-    emphasis: "Lorem ipsum",
+    icon: EmojiHappyIcon,
+    emphasis: "Customer Satisfaction",
   },
   {
     id: 3,
-    stat: "stat #3",
-    emphasis: "Lorem ipsum",
+    icon: PresentationChartBarIcon,
+    emphasis: "Process Improvement",
   },
   {
     id: 4,
-    stat: "stat #4",
-    emphasis: "Lorem ipsum",
+    icon: BellIcon,
+    emphasis: "Predictability",
   },
 ];
