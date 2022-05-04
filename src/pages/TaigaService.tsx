@@ -24,6 +24,7 @@ const TaigaService: React.FC = () => {
     "Throughput",
     "Accepted Work Spread",
     "Impediment Tracker",
+    "Scope Change",
   ];
   const nav = (route: string) => {
     navigate(route);
@@ -32,7 +33,7 @@ const TaigaService: React.FC = () => {
     e.preventDefault();
     if (select !== "Metrics") {
       const metric = map[select];
-
+      console.log(metric);
       localForage.getItem("input", (err, value) => {
         console.log(value);
         if (value !== null && value !== url) {
@@ -49,8 +50,7 @@ const TaigaService: React.FC = () => {
 
       try {
         const data =
-          select === "CFD" ||
-          select === "WIP"
+          select === "CFD" || select === "WIP"
             ? axios.post(`${metric.endpoint}`, {
                 username: username,
                 password: password,

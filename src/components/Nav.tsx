@@ -79,7 +79,7 @@ const navigation = [
   },
   {
     name: "Scope Change",
-    href: "/cummulative-flow-diagram",
+    href: "/scope-change",
     icon: CollectionIcon,
     current: false,
   },

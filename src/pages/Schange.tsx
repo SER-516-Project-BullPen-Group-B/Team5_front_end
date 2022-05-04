@@ -2,7 +2,7 @@ import DropDown from "../components/DropDown";
 import localForage from "localforage";
 import { useEffect, useState } from "react";
 import LineChart from "../components/LineChart";
-import Scopechange from "../components/Scopechange;
+import Scopechange from "../components/Scopechange";
 
 const Schange: React.FC = () => {
   const [data, setData] = useState("");

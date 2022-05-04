@@ -38,7 +38,7 @@ export const options = {
   legend: { position: "none" },
 };
 
-export function App() {
+export default function Histogram() {
   return (
     <Chart
       chartType="Histogram"
