@@ -1,5 +1,6 @@
 import React from "react";
 import { Chart } from "react-google-charts";
+import PropTypes from "prop-types";
 
 export const data = [
   ["Dinosaur", "Length"],
@@ -34,18 +35,30 @@ export const data = [
 ];
 
 export const options = {
-  title: "Lengths of dinosaurs, in meters",
-  legend: { position: "none" },
+  title: "Visualization for Scope Change",
+  legend: { position: "bottom" },
+  colors: ["#e7711c"],
 };
 
-export default function Histogram() {
+interface HistogramProps {
+  data: string;
+}
+
+const Histogram: React.FC<HistogramProps> = ({ data }) => {
+  console.log(data);
   return (
     <Chart
       chartType="Histogram"
       width="100%"
       height="400px"
-      data={data}
+      data={JSON.parse(data)}
       options={options}
     />
   );
-}
+};
+
+Histogram.propTypes = {
+  data: PropTypes.string.isRequired,
+};
+
+export default Histogram;

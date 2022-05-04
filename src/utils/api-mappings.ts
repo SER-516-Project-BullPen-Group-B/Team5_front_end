@@ -1,5 +1,3 @@
-import Scopechange from "../components/Scopechange";
-
 const data = {
   leadTime: {
     name: "Lead Time",
