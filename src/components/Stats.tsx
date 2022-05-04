@@ -1,4 +1,5 @@
 import { metrics } from "../utils/content";
+import "../styles/Metrics.css";
 
 export default function Stats() {
   return (
@@ -26,19 +27,21 @@ export default function Stats() {
             </span>
           </h2>
           <p className="mt-3 text-3xl font-extrabold text-white">
-            Get actionable data that will help grow your business
+            Get actionable data that will help grow your business.
           </p>
           <p className="mt-5 text-lg text-gray-300">
-            loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Projects using metrics to analyze and understand about their processes have seen improvements like
           </p>
           <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
             {metrics.map((item) => (
               <p key={item.id}>
-                <span className="block text-2xl font-bold text-white">
-                  {item.stat}
+                <span className="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10 margin-w-auto">
+                  <item.icon
+                    className="h-6 w-6 text-white"
+                    aria-hidden="true"
+                  />
                 </span>
-                <span className="mt-1 block text-base text-gray-300">
+                <span className="mt-1 block text-base text-gray-300 margin-h-12">
                   <span className="font-medium text-white">
                     {item.emphasis}
                   </span>{" "}
