@@ -15,11 +15,12 @@ const ScopeChange = () => {
         let oldUserStories = 0;
         let newUserStories = 0;
         value.forEach((element: any) => {
+          console.log(element);
           if (element.added_before_or_after_planning === "Before") {
-            data.push([element.description, 0.2, null]);
+            data.push([element.user_story, 0.2, null]);
             oldUserStories += 1;
           } else {
-            data.push([element.description, null, 0.3]);
+            data.push([element.user_story, null, 0.3]);
             newUserStories += 1;
           }
           setGaugeData(
