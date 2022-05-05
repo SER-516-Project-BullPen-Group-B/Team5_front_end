@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import localForage from "localforage";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -29,11 +29,31 @@ const TaigaService: React.FC = () => {
   const nav = (route: string) => {
     navigate(route);
   };
+
+  useEffect(() => {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    localForage.getItem("username", (err, value: any) => {
+      if (value !== null) {
+        setUsername(value);
+      }
+    });
+    localForage.getItem("password", (err, value: any) => {
+      if (value !== null) {
+        setPassword(value);
+      }
+    });
+    localForage.getItem("input", (err, value: any) => {
+      if (value !== null) {
+        setUrl(value);
+      }
+    });
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (select !== "Metrics") {
       const metric = map[select];
-      console.log(metric);
+      localForage.setItem("username", username);
+      localForage.setItem("password", password);
       localForage.getItem("input", (err, value) => {
         console.log(value);
         if (value !== null && value !== url) {
