@@ -59,7 +59,8 @@ const data = {
   },
   throughput: {
     name: "Throughput",
-    endpoint: "https://mpattan.pythonanywhere.com/throughput?slug=",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/throughput?slug=",
     requestSuccess: "Viz for Throughput is ready!",
     requestFail: "An unexpected error occurec while processing the request",
     requestPending: "Generting Viz for Throughput",
@@ -79,7 +80,7 @@ const data = {
   impediment: {
     name: "Impediment Tracker",
     endpoint:
-      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/impediment-tracker",
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/impediment-tracker?slug=",
     requestSuccess: "Viz for Impediment Trakcer is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Impediment Tracker",
