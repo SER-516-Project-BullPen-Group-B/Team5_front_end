@@ -21,8 +21,9 @@ export default function Hero() {
                 Software Development Projects
               </span>
             </h1>
-            <p className="mt-6 max-w-lg mx-auto text-center text-xl text-cyan-100 sm:max-w-3xl">
-              Visualize your project metrics using <br/><img src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg" className="mini-logo"/>by clicking the <strong>Get Started</strong> button below.
+            <p className="mt-6 max-w-lg mx-auto text-center text-l text-cyan-100 sm:max-w-3xl">
+              Visualize your project metrics using our service by clicking the{" "}
+              <strong>Get Started</strong> button below.
             </p>
             <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">

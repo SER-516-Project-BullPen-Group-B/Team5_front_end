@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@media only screen and (max-width: 300px) {
+    #gauge {
+        margin-left: 35%;
+      }
+}
+
+@media only screen and (max-width: 600px) {
+    #gauge {
+        margin-left: 35%;
+      }
+}
+
+@media screen and (min-width: 768px) {
+    #gauge {
+        margin-left: 35%;
+      }
+    }
+    
+    @media screen and (min-width: 992px) {
+        #gauge {
+            margin-left: 35%;
+          }
+    }
+    
+    @media screen and (min-width: 1280px) {
+        #gauge {
+            margin-left: 45%;
+          }
+    }
+    
+    @media screen and (min-width: 1920px) {
+        #gauge {
+            margin-left: 45%;
+          }
+    }
+    @media screen and (min-width: 3840px) {
+        #gauge {
+            margin-left: 55%;
+          }
+    }
+
+
 body {
     font-family: 'Poppins', sans-serif;
 }
