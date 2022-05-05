@@ -10,6 +10,7 @@ import {
   DocumentReportIcon,
   ClockIcon,
   BriefcaseIcon,
+  RefreshIcon,
   BanIcon,
   TrendingUpIcon,
   BadgeCheckIcon,
@@ -76,6 +77,12 @@ const navigation = [
     name: "Accepted Work Spread",
     href: "/accepted-work-spread",
     icon: BadgeCheckIcon,
+  },
+  {
+    name: "Scope Change",
+    href: "/scope-change",
+    icon: RefreshIcon,
+    current: false,
   },
 ];
 

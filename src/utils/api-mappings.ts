@@ -78,13 +78,24 @@ const data = {
   },
   impediment: {
     name: "Impediment Tracker",
-    endpoint: "https://sheltered-mountain-32733.herokuapp.com/?by_slug=",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/impediment-tracker",
     requestSuccess: "Viz for Impediment Trakcer is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Impediment Tracker",
     localForageKey: "impediment",
-    route: "/impediment-tracker"
-  }
+    route: "/impediment-tracker",
+  },
+  scopeChange: {
+    name: "Scope Change",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/scope-change?slug=",
+    requestSuccess: "Viz for Scope Change is ready!",
+    requestFail: "An unexpected error occured while processing the request",
+    requestPending: "Generating Viz for Scope Change",
+    localForageKey: "scopeChange",
+    route: "/scope-change",
+  },
 };
 
 export const map = {
@@ -97,4 +108,5 @@ export const map = {
   "Impediment Tracker": data.impediment,
   Throughput: data.throughput,
   "Accepted Work Spread": data.acceptedWorkSpread,
+  "Scope Change": data.scopeChange,
 };
