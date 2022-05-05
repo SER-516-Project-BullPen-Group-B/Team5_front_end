@@ -5,16 +5,16 @@ test("Renders Home Page", () => {
   render(<Home />);
   const mainTitle = screen.getByText("Take control of your");
   const subTitle = screen.getByText("Software Development Projects");
-  const getStarted = screen.getByText("Get started");
   const liveDemo = screen.getByText("Live demo");
-  const loreIpsum = screen.getByText("Lore ipsum");
-  const statsTitle = screen.getByText("Valuable Metrics");
+  const loreIpsum = screen.getByText("Get Started");
+  const statsTitle = screen.getByText(
+    "Metrics that help analyze your team's performance"
+  );
   const statsSubTitle = screen.getByText(
-    "Get actionable data that will help grow your business"
+    "Our metrics provide an insight into productivity through the different stages of a software development lifecycle. This helps to assess the quality of a product and track team performance."
   );
   expect(mainTitle).toBeInTheDocument();
   expect(subTitle).toBeInTheDocument();
-  expect(getStarted).toBeInTheDocument();
   expect(liveDemo).toBeInTheDocument();
   expect(loreIpsum).toBeInTheDocument();
   expect(statsTitle).toBeInTheDocument();

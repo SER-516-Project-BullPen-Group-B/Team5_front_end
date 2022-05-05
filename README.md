@@ -11,6 +11,10 @@ Creates a docker image for the web app.
 
 ### `docker run -d -p <exposed-port>:3000 <image-name>:<tag>`
 
+### `yarn`
+
+Installs all the dependencies for the web app.
+
 ### `yarn start`
 
 Runs the app in the development mode.\
