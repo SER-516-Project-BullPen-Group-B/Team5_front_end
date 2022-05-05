@@ -1,8 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import TaigaService from "../pages/TaigaService";
+import { BrowserRouter } from "react-router-dom";
 
 test("Renders Taiga Service Page", async () => {
-  render(<TaigaService />);
+  render(
+    <BrowserRouter>
+      <TaigaService />
+    </BrowserRouter>
+  );
   const mainTitle = screen.getByText(
     "Welcome! Visualize your project’s metrics here"
   );
