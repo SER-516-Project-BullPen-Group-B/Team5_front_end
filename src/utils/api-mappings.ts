@@ -78,7 +78,8 @@ const data = {
   },
   impediment: {
     name: "Impediment Tracker",
-    endpoint: "https://sheltered-mountain-32733.herokuapp.com/?by_slug=",
+    endpoint:
+      "https://c2wmws294a.execute-api.us-west-2.amazonaws.com/dev/impediment-tracker",
     requestSuccess: "Viz for Impediment Trakcer is ready!",
     requestFail: "An unexpected error occured while processing the request",
     requestPending: "Generating Viz for Impediment Tracker",

@@ -10,6 +10,7 @@ import {
   DocumentReportIcon,
   ClockIcon,
   BriefcaseIcon,
+  RefreshIcon,
   BanIcon,
   TrendingUpIcon,
   BadgeCheckIcon,
@@ -80,7 +81,7 @@ const navigation = [
   {
     name: "Scope Change",
     href: "/scope-change",
-    icon: CollectionIcon,
+    icon: RefreshIcon,
     current: false,
   },
 ];
