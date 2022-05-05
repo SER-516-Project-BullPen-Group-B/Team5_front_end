@@ -33,6 +33,7 @@ interface GaugeProps {
   value: string;
 }
 const Gauge: React.FC<GaugeProps> = ({ value }) => {
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   const [metric, setMetric]: any[] = useState([
     ["Label", "Value"],
     ["Scope Change", 0],

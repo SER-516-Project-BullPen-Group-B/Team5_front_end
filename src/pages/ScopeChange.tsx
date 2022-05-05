@@ -12,8 +12,8 @@ const ScopeChange = () => {
       if (value !== null) {
         const data: (string | number)[][] = [];
         data.push(["Label", "Before", "After"]);
-        let oldUserStories: number = 0;
-        let newUserStories: number = 0;
+        let oldUserStories = 0;
+        let newUserStories = 0;
         value.forEach((element: any) => {
           if (element.added_before_or_after_planning === "Before") {
             data.push([element.description, 0.2, null]);
