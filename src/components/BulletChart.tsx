@@ -12,6 +12,7 @@ const BulletChart:React.FC<BulletChartProps> = ({ data }) => {
         <div style={{height: 100*data.length}}>
             <ResponsiveBullet
                 data={data}
+                maxValue={'auto'}
                 margin={{ top: 50, right: 90, bottom: 50, left: 90 }}
                 spacing={46}
                 rangeColors = {'seq:blues'}

@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 interface RadialBarChartProps {
     /* eslint-disable  @typescript-eslint/no-explicit-any */
     data: any;
+    length: number;
 }
 
-const RadialBarChart:React.FC<RadialBarChartProps> = ({ data }) => {
+const RadialBarChart:React.FC<RadialBarChartProps> = ({ data,length }) => {
     data = JSON.parse(data);
     console.log(data);
     return (
@@ -15,7 +16,7 @@ const RadialBarChart:React.FC<RadialBarChartProps> = ({ data }) => {
                 data={data}
                 valueFormat=">-.2f"
                 padding={0.4}
-                maxValue = {100}
+                maxValue = {length}
                 colors = {{ scheme:'set1' }}
                 cornerRadius={2}
                 endAngle ={360}
@@ -29,6 +30,7 @@ const RadialBarChart:React.FC<RadialBarChartProps> = ({ data }) => {
 
 RadialBarChart.propTypes = {
     data: PropTypes.any.isRequired,
+    length: PropTypes.any.isRequired,
 }
 
 export default RadialBarChart;

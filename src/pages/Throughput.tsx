@@ -25,17 +25,18 @@ const Throughput: React.FC = () => {
   const [radialData, setRadialData] = useState("");
   const [select, setSelect] = useState("Bullet");
   const types = ["Bullet","RadialBar"];
-  
+  const [length, setLength] = useState(0);
   useEffect(() => {
     /* eslint-disable @typescript-eslint/no-explicit-any */
     localforage.getItem("throughput", (err, value: any) => {
       let bulletData:BulletDataInterface[]= []
       let radialData:RadialDataInterface[] = []
       for(let i=0;i<Object.keys(value).length;i++){
+        const maxValue = Math.max(...Object.values(value).map((i) => Number(i)))*1.2;
         if(select === "Bullet"){
           const item = {
             "id": Object.keys(value)[i],
-            "ranges": [0,40,70,100],
+            "ranges": [0,maxValue*0.4,maxValue*0.7,maxValue],
             "measures": [Object.values(value)[i] as number],
             "markers":[Object.values(value)[i] as number]
           }
@@ -50,6 +51,7 @@ const Throughput: React.FC = () => {
             }],
           }
           radialData = [...radialData, item]
+          setLength(Math.max(...Object.values(value).map((i) => Number(i)))*1.2)
         }
       }
       if (select === "Bullet") {
@@ -69,10 +71,9 @@ const Throughput: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        
         {select === "RadialBar" ? (
           radialData ? (
-            <RadialBarChart data={radialData}/>
+            <RadialBarChart data={radialData} length={length}/>
           ) : (
             <div>
               Data not available, please make a valid request before you visit
